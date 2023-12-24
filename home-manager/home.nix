@@ -17,6 +17,7 @@
       firefox
       gnomeExtensions.gsconnect
       lutris
+      marker
       steam
       telegram-desktop
       virtualbox
