@@ -58,16 +58,10 @@
   };
 
   # Programs added here are managed by home-manager
-  programs = {
-    # Home-manager itself
-    home-manager.enable = true;
+  imports = [
+    ./configs/shell/sh.nix
+  ];
 
-    bash = {
-      enable = true;
-      shellAliases = {
-        print_hello = "echo hello";
-      };
-    };
-
-  };
+  # Home-manager itself, do not remove
+  programs.home-manager.enable = true;
 }
