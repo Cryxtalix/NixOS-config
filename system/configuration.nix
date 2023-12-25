@@ -173,7 +173,6 @@
     vlc
     libreoffice
     python3
-    libgccjit
     gnomeExtensions.alphabetical-app-grid
     gnomeExtensions.caffeine
     neofetch
