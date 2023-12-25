@@ -172,7 +172,6 @@
     chromium
     vlc
     libreoffice
-    python3
     gnomeExtensions.alphabetical-app-grid
     gnomeExtensions.caffeine
     neofetch
