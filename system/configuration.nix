@@ -161,21 +161,22 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    p7zip
-    nano
-    htop
-    wget
-    git
-    tealdeer
-    cmake
-    unrar
     chromium
-    vlc
-    libreoffice
+    cmake
+    git
     gnomeExtensions.alphabetical-app-grid
     gnomeExtensions.caffeine
+    htop
+    libreoffice
+    nano
     neofetch
+    p7zip
     switcheroo-control
+    tealdeer
+    unrar
+    vlc
+    wget
+    (python3.withPackages(ps: with ps; [ numpy toolz ]))
   ];
 
   # Program enable
