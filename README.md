@@ -2,13 +2,13 @@
 Uses home-manager and flakes.
 
 ## To update system packages:
-$ sudo nixos-rebuild switch --flake .
+$ `sudo nixos-rebuild switch --flake .`
 
 ## To update home packages
-$ home-manager switch --flake .
+$ `home-manager switch --flake .`
 
 ## To update flake
-$ nix flake update
+$ `nix flake update`
 
 ## To start development environment
-$ nix-dev <choice_of_language>
+$ `nix-dev <choice_of_language>`
