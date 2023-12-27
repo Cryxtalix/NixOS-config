@@ -8,7 +8,7 @@
     };
     initExtra = ''
       nix-dev() {
-        nix develop ~/.flakes/dev_envs/.#"$1"
+        nix develop ~/.flakes/.#"$1"
       }
     '';
   };
