@@ -11,6 +11,7 @@
   # Programs added here are managed by home-manager
   imports = [
     ../../user/shell/sh.nix
+    ../../user/editor/neovim.nix
   ];
 
   home.packages = with pkgs; [
