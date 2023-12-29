@@ -13,7 +13,9 @@
       locale = "en_SG.UTF-8";
       configDir = "~/.flakes";
 
-      # Profile, change for different nix setups
+      # Profile
+      # Change for different nix setups
+      # Create folder of the same name in ./profiles
       profile = "acer_swift_laptop";
 
       # User settings
