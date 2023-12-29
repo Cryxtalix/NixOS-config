@@ -4,8 +4,11 @@ pkgs.mkShell {
   buildInputs = with pkgs; [
     python3
     mypy
-    python311Packages.jupyter-core
-  ];
+  ] ++ 
+  (with pkgs.python311Packages; [
+    pip
+    numpy
+  ]);
   shellHook = ''
     echo "Started Python development environment..."
   '';
