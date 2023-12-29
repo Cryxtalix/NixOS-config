@@ -20,7 +20,9 @@
     discord
     ffmpeg
     firefox
+    gnomeExtensions.blur-my-shell
     gnomeExtensions.gsconnect
+    #gnomeExtensions.prime-helper
     lutris
     marker
     steam
