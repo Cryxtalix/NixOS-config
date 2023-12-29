@@ -9,10 +9,12 @@
       pkgs = nixpkgs.legacyPackages.${system};
       system = "x86_64-linux";
       hostname = "nixos";
-      profile = "acer_swift_laptop";
       timezone = "Asia/Singapore";
       locale = "en_SG.UTF-8";
       configDir = "~/.flakes";
+
+      # Profile, change for different nix setups
+      profile = "acer_swift_laptop";
 
       # User settings
       name = "Cryxtalix";
