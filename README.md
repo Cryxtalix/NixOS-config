@@ -2,7 +2,7 @@
 Uses home-manager and flakes.
 
 ## To update flake:
-Fetches latest versions of nixpkgs and dependencies
+*Fetches latest versions of nixpkgs and dependencies*
 
 $ `nix-flake-up`
 
@@ -16,4 +16,6 @@ $ `nix-home-up`
 $ `nix-full-up`
 
 ## To start development environment:
+*Convenient env, use dev templates for project specific envs*
+
 $ `nix-dev <choice_of_language>`

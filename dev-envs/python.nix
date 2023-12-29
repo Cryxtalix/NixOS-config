@@ -6,8 +6,13 @@ pkgs.mkShell {
     mypy
   ] ++ 
   (with pkgs.python311Packages; [
+    # pip packages
     pip
     numpy
+    matplotlib
+    scikit-learn
+    pandas
+    seaborn
   ]);
   shellHook = ''
     echo "Started Python development environment..."
