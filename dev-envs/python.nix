@@ -13,6 +13,8 @@ pkgs.mkShell {
     scikit-learn
     pandas
     seaborn
+    jupyter
+    ipython
   ]);
   shellHook = ''
     echo "Started Python development environment..."
