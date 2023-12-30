@@ -12,6 +12,7 @@
   imports = [
     ../../user/shell/sh.nix
     ../../user/editor/neovim.nix
+    #../../user/editor/nix-direnv.nix
   ];
 
   home.packages = with pkgs; [
