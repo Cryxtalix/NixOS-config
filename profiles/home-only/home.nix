@@ -7,6 +7,7 @@
   home.homeDirectory = "/home/" + username;
   home.stateVersion = "23.11"; # Do not change
   programs.home-manager.enable = true; # Do not change
+  targets.genericLinux.enable = true;
 
   # Programs added here are managed by home-manager
   imports = [
