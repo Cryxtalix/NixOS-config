@@ -11,7 +11,7 @@
       hostname = "nixos";
       timezone = "Asia/Singapore";
       locale = "en_SG.UTF-8";
-      configDir = "~/.flakes";
+      configDir = "~/NixOS-config"; # Path of this file
 
       # Profile
       # Change for different nix setups
