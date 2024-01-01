@@ -1,4 +1,4 @@
-{ config, pkgs, name, username, configDir, ... }:
+{ config, pkgs, name, username, is_nixos, configDir, ... }:
 
 {
   nixpkgs.config.allowUnfree = true;

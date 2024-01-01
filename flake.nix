@@ -17,6 +17,7 @@
       # Change for different nix setups
       # Create folder of the same name in ./profiles
       profile = "acer_swift_laptop";
+      is_nixos = true;
 
       # User settings
       name = "Cryxtalix";
@@ -25,7 +26,7 @@
     in
 
   {
-    nixosConfigurations = if (profile != "home-only") then {
+    nixosConfigurations = if is_nixos then {
       nixos = lib.nixosSystem {
         inherit system;
         modules = [
@@ -49,6 +50,7 @@
         extraSpecialArgs = {
           inherit name;
           inherit username;
+          inherit is_nixos;
           inherit configDir;
         };
       };
