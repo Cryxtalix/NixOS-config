@@ -18,6 +18,7 @@
   home.packages = with pkgs; [
     arduino
     bottles
+    chromium
     discord
     ffmpeg
     firefox
@@ -25,14 +26,19 @@
     gnomeExtensions.blur-my-shell
     gnomeExtensions.gsconnect
     #gnomeExtensions.prime-helper
+    libreoffice
     libvirt
     lutris
     marker
+    neofetch
+    p7zip
     qemu
     steam
     telegram-desktop
+    unrar
     virtualbox
     virt-manager
+    vlc
     vscode
     wineWowPackages.stable
     winetricks
