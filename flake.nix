@@ -25,7 +25,7 @@
     in
 
   {
-    nixosConfigurations = {
+    nixosConfigurations = if (profile != "home-only") then {
       nixos = lib.nixosSystem {
         inherit system;
         modules = [
@@ -38,7 +38,7 @@
           inherit hostname;
         };
       };
-    };
+    } else {};
 
     homeConfigurations = {
       cryxtalix = home-manager.lib.homeManagerConfiguration {
