@@ -21,6 +21,7 @@
     bottles
     chromium
     discord
+    element-desktop
     ffmpeg
     firefox
     gnome.gnome-boxes

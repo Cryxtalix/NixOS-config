@@ -19,6 +19,7 @@
     arduino
     bottles
     discord
+    element-desktop
     ffmpeg
     firefox
     gnome.gnome-boxes
@@ -31,6 +32,7 @@
     qemu
     steam
     telegram-desktop
+    unciv
     virtualbox
     virt-manager
     vscode

@@ -4,6 +4,12 @@
   outputs = { self, nixpkgs, home-manager, ... }:
 
     let
+    /* 
+    DO NOT KEEP PASSWORDS AND API KEYS HERE! Use proper secrets encryption like:
+    sops-nix: https://github.com/Mic92/sops-nix#deploy-example
+    OR
+    agenix: https://github.com/ryantm/agenix
+    */
       # System settings
       lib = nixpkgs.lib;
       pkgs = nixpkgs.legacyPackages.${system};
@@ -11,18 +17,16 @@
       hostname = "nixos";
       timezone = "Asia/Singapore";
       locale = "en_SG.UTF-8";
-      configDir = "~/NixOS-config"; # Path of this file
-
-      # Profile
-      # Change for different nix setups
-      # Create folder of the same name in ./profiles
-      profile = "acer_swift_laptop";
-      is_nixos = true;
 
       # User settings
       name = "Cryxtalix";
       username = "cryxtalix";
       email = "fgx8p9t@protonmail.com";
+
+      # Likely to change when switching profiles
+      profile = "acer_swift_laptop";
+      is_nixos = true;
+      configDir = "~/NixOS-config"; # Path of this file
     in
 
   {
