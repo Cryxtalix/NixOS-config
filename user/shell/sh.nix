@@ -30,6 +30,7 @@
     );
 
     initExtra = ''
+      export PS1='\[\e[1m\][ \[\e[96m\]\w \[\e[39m\]]\\$ \[\e[0m\]'
       nix-dev() {
         nix develop ${configDir}/.#"$1"
       }
