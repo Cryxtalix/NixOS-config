@@ -15,6 +15,7 @@
     ../../user/editor/neovim.nix
     #../../user/editor/nix-direnv.nix
   ];
+  #programs.kdeconnect.enable = true;
 
   home.packages = with pkgs; [
     arduino
@@ -25,23 +26,30 @@
     ffmpeg
     firefox
     gnome.gnome-boxes
+    gnomeExtensions.alphabetical-app-grid
     gnomeExtensions.blur-my-shell
+    gnomeExtensions.caffeine
     gnomeExtensions.gsconnect
     #gnomeExtensions.prime-helper
+    htop
     libreoffice
     libvirt
     lutris
     marker
     neofetch
     p7zip
+    python3
     qemu
+    realvnc-vnc-viewer
     steam
+    switcheroo-control
     telegram-desktop
     unrar
     virtualbox
     virt-manager
     vlc
     vscode
+    wget
     wineWowPackages.stable
     winetricks
   ];

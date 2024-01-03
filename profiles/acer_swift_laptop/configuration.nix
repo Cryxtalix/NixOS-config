@@ -161,26 +161,11 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    chromium
-    cmake
     git
-    gnomeExtensions.alphabetical-app-grid
-    gnomeExtensions.caffeine
-    htop
-    libreoffice
-    nano
-    neofetch
-    p7zip
     switcheroo-control
-    tealdeer
-    unrar
-    vlc
-    wget
-    (python3.withPackages(ps: with ps; [ numpy toolz ]))
   ];
 
   # Program enable
-  programs.kdeconnect.enable = true;
   services.switcherooControl.enable = true;
 
   # Remove unwanted packages
