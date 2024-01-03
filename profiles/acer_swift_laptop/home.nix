@@ -14,28 +14,42 @@
     ../../user/editor/neovim.nix
     #../../user/editor/nix-direnv.nix
   ];
+  #programs.kdeconnect.enable = true;
 
+  # Installed packages
   home.packages = with pkgs; [
     arduino
     bottles
+    chromium
     discord
     element-desktop
     ffmpeg
     firefox
     gnome.gnome-boxes
+    gnomeExtensions.alphabetical-app-grid
     gnomeExtensions.blur-my-shell
+    gnomeExtensions.caffeine
     gnomeExtensions.gsconnect
     #gnomeExtensions.prime-helper
+    htop
+    libreoffice
     libvirt
     lutris
     marker
+    neofetch
+    p7zip
+    python3
     qemu
+    realvnc-vnc-viewer
     steam
+    switcheroo-control
     telegram-desktop
-    unciv
+    unrar
     virtualbox
     virt-manager
+    vlc
     vscode
+    wget
     wineWowPackages.stable
     winetricks
   ];
