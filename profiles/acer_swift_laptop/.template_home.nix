@@ -1,3 +1,5 @@
+# To use, rename to home.nix and set use_default_home to false in flake.nix.
+
 { config, pkgs, name, username, is_nixos, configDir, ... }:
 
 {
@@ -17,7 +19,7 @@
 
   # Installed packages
   home.packages = with pkgs; [
-    chromium
+    #chromium
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage

@@ -25,8 +25,8 @@
 
       # Likely to change when switching profiles
       profile = "acer_swift_laptop";
-      is_nixos = true; # False if just using nix package manager
-      use_default_home = true; # True to use home.nix file in ./profile/defaults
+      is_nixos = true; # Set "false" if only using nix package manager on other distro
+      use_default_home = true; # Set "true" to use home.nix file in ./profile/defaults
       configDir = "~/NixOS-config"; # Path of this file
     in
 
