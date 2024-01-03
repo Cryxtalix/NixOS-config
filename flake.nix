@@ -25,7 +25,8 @@
 
       # Likely to change when switching profiles
       profile = "acer_swift_laptop";
-      is_nixos = true;
+      is_nixos = true; # False if just using nix package manager
+      use_default_home = true; # True to use home.nix file in ./profile/defaults
       configDir = "~/NixOS-config"; # Path of this file
     in
 
@@ -48,9 +49,11 @@
     homeConfigurations = {
       cryxtalix = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
-        modules = [
+        modules = if use_default_home then [
+          (./profiles/defaults/home.nix)
+        ] else if !use_default_home then [
           (./profiles + "/${profile}" + /home.nix)
-        ];
+        ] else [];
         extraSpecialArgs = {
           inherit name;
           inherit username;
