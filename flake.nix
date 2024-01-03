@@ -32,7 +32,7 @@
 
   {
     nixosConfigurations = if is_nixos then {
-      nixos = lib.nixosSystem {
+      hostname = lib.nixosSystem {
         inherit system;
         modules = [
           (./profiles + "/${profile}" + /configuration.nix)
@@ -47,7 +47,7 @@
     } else {};
 
     homeConfigurations = {
-      cryxtalix = home-manager.lib.homeManagerConfiguration {
+      username = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         modules = if use_default_home then [
           (./profiles/defaults/home.nix)
