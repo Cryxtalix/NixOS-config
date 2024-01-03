@@ -7,7 +7,7 @@
   home.homeDirectory = "/home/" + username;
   home.stateVersion = "23.11"; # Do not change
   programs.home-manager.enable = true; # Do not change
-  targets.genericLinux.enable = true;
+  targets.genericLinux.enable = if is_nixos then false else true;
 
   # Programs added here are managed by home-manager
   imports = [
@@ -17,6 +17,7 @@
   ];
   #programs.kdeconnect.enable = true;
 
+  # Installed packages
   home.packages = with pkgs; [
     arduino
     bottles
