@@ -21,11 +21,12 @@ $ `nix-full-up`
 $ `nix-dev <choice_of_language>`
 
 # For nix package manager on another distro:
-1. Install nix using the system package manager
+1. Install nix from `https://nixos.org/download`
 2. Add home-manager channel: `nix-channel --add https://github.com/nix-community/home-manager/archive/release-23.11.tar.gz home-manager`
 3. Update nix-channels: `nix-channel --update`
 4. Install home-manager: `nix-shell '<home-manager>' -A install`
 5. Go to ~/.config/nix/ creating the folders if they do not exist
 6. Create config file with ` echo "experimental-features = nix-command flakes" >> nix.conf`
-7. Clone this repo, cd into it and open flake.nix in a text editor. Change the attributes. Be sure to set `is_nixos = false;`
-8. Run: `home-manager switch --flake .`
+7. Run: `git clone https://github.com/Cryxtalix/NixOS-config && cd ~/NixOS-config`
+8. Open flake.nix in a text editor. Change the attributes. Be sure to set `is_nixos = false;`
+9. Run: `home-manager switch -b backup --flake .#username`

@@ -1,4 +1,4 @@
-{ config, pkgs, name, username, is_nixos, configDir, ... }:
+{ config, pkgs, name, username, email, is_nixos, configDir, ... }:
 
 {
   nixpkgs.config.allowUnfree = true;
@@ -13,9 +13,8 @@
   imports = [
     ../../user/shell/sh.nix
     ../../user/editor/neovim.nix
-    #../../user/editor/nix-direnv.nix
+    ../../user/apps/git.nix
   ];
-  #programs.kdeconnect.enable = true;
 
   # Installed packages
   home.packages = with pkgs; [
@@ -27,17 +26,18 @@
     ffmpeg
     firefox
     gnome.gnome-boxes
+    gnome-extension-manager
     gnomeExtensions.alphabetical-app-grid
     gnomeExtensions.blur-my-shell
     gnomeExtensions.caffeine
     gnomeExtensions.gsconnect
-    #gnomeExtensions.prime-helper
     htop
     libreoffice
     libvirt
     lutris
     marker
     neofetch
+    openssl
     p7zip
     python3
     qemu

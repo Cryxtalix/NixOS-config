@@ -2,7 +2,7 @@
   let 
     default = {
       print_dir = "echo " + configDir;
-      nix-flake-up = "nix flake update " + configDir;
+      nix-flake-up = "nix flake update --flake " + configDir;
       nix-home-up = "home-manager switch --flake " + configDir + "#username";
     };
 
