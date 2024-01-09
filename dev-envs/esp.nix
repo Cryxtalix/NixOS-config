@@ -13,6 +13,6 @@ pkgs.mkShell {
   ]);
   shellHook = ''
     . $HOME/Workspace/ESP32/esp-idf/export.sh
-    echo "Started Python development environment..."
+    echo "Started ESP32 development environment..."
   '';
 }
