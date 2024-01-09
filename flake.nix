@@ -6,7 +6,7 @@
     let
     /* 
     DO NOT KEEP PASSWORDS AND API KEYS HERE! Use proper secrets encryption like:
-    sops-nix: https://github.com/Mic92/sops-nix#deploy-example
+    sops-nix: https://github.com/Mic92/sops-nix
     OR
     agenix: https://github.com/ryantm/agenix
     */

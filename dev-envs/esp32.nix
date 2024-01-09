@@ -2,22 +2,17 @@
 
 pkgs.mkShell {
   buildInputs = with pkgs; [
+    gcc.cc.lib
+    cmake
     python3
-    mypy
   ] ++ 
   (with pkgs.python311Packages; [
     # pip packages
     pip
     ninja
-    numpy
-    matplotlib
-    scikit-learn
-    pandas
-    seaborn
-    jupyter
-    ipython
   ]);
   shellHook = ''
+    . $HOME/Workspace/ESP32/esp-idf/export.sh
     echo "Started Python development environment..."
   '';
 }
