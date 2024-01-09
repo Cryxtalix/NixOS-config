@@ -19,8 +19,8 @@
   # Installed packages
   home.packages = with pkgs; [
     arduino
-    bottles
     chromium
+    ddrescue
     discord
     element-desktop
     ffmpeg
@@ -46,7 +46,6 @@
     switcheroo-control
     telegram-desktop
     unrar
-    virtualbox
     virt-manager
     vlc
     vscode

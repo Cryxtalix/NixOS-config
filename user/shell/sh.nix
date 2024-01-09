@@ -1,7 +1,7 @@
 { config, lib, pkgs, is_nixos, configDir, ... }:
   let 
     default = {
-      print_dir = "echo " + configDir;
+      ll = "ls -al";
       nix-flake-up = "nix flake update --flake " + configDir;
       nix-home-up = "home-manager switch --flake " + configDir + "#username";
     };
@@ -10,13 +10,11 @@
     nixos = {
       nix-system-up = "sudo nixos-rebuild switch --flake " + configDir + "#hostname";
       nix-full-up = "nix-flake-up && nix-system-up && nix-home-up";
-      isnixos = "echo YES";
     };
       
     # Bash commands for other distros
     home-only = {
       nix-full-up = "nix-flake-up && nix-home-up";
-      isnixos = "echo NO";
     };
   in
 {
@@ -29,6 +27,10 @@
       lib.mkMerge [default home-only]
     );
 
+    sessionVariables = {
+
+    };
+
     initExtra = ''
       export PS1='\[\e[1m\][ \[\e[96m\]\w \[\e[39m\]]\\$ \[\e[0m\]'
       nix-dev() {
@@ -37,3 +39,4 @@
     '';
   };
 }
+
