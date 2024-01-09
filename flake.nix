@@ -67,6 +67,7 @@
     # Development environments
     c = import ./dev-envs/c.nix { inherit self pkgs; };
     python = import ./dev-envs/python.nix { inherit self pkgs; };
+    esp = import ./dev-envs/esp.nix { inherit self pkgs; };
   };
 
   inputs = {
