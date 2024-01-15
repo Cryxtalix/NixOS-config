@@ -25,12 +25,13 @@
     element-desktop
     ffmpeg
     firefox
+    gittyup
     gnome.gnome-boxes
     gnome-extension-manager
     gnomeExtensions.alphabetical-app-grid
     gnomeExtensions.blur-my-shell
     gnomeExtensions.caffeine
-    gnomeExtensions.gsconnect
+    gnomeExtensions.gsconnect # Check https://userbase.kde.org/KDEConnect#Troubleshooting
     htop
     libreoffice
     libvirt
@@ -40,6 +41,7 @@
     openssl
     p7zip
     python3
+    qbittorrent-qt5
     qemu
     realvnc-vnc-viewer
     steam
