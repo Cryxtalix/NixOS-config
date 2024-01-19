@@ -35,7 +35,7 @@
       hostname = lib.nixosSystem {
         inherit system;
         modules = [
-          (./profiles + "/${profile}" + /configuration.nix)
+          (./configs/system/ + "${profile}" + /configuration.nix)
         ];
         specialArgs = {
           inherit timezone;
@@ -50,9 +50,9 @@
       username = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         modules = if use_default_home then [
-          (./profiles/defaults/home.nix)
+          (./configs/home/default/home.nix)
         ] else if !use_default_home then [
-          (./profiles + "/${profile}" + /home.nix)
+          (./configs/home/ + "${profile}" + /home.nix)
         ] else [];
         extraSpecialArgs = {
           inherit name;
