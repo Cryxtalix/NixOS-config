@@ -1,7 +1,7 @@
 {
   description = "MyFlake";
 
-  outputs = { self, nixpkgs, home-manager, ... }:
+  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, ... }:
 
     let
     /* 
@@ -12,7 +12,8 @@
     */
       # System settings
       lib = nixpkgs.lib;
-      pkgs = nixpkgs.legacyPackages.${system};
+      pkgs = import nixpkgs { inherit system; };
+      unstable = import nixpkgs-unstable { inherit system; };
       system = "x86_64-linux";
       hostname = "nixos";
       timezone = "Asia/Singapore";
@@ -55,6 +56,7 @@
           (./configs/home + "/${profile}" + /home.nix)
         ] else [];
         extraSpecialArgs = {
+          inherit unstable;
           inherit name;
           inherit username;
           inherit email;
@@ -78,6 +80,7 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     home-manager = {
       url = "github:nix-community/home-manager/release-23.11";
       inputs.nixpkgs.follows = "nixpkgs";

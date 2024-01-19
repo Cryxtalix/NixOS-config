@@ -1,4 +1,4 @@
-{ config, pkgs, name, username, email, is_nixos, configDir, ... }:
+{ config, pkgs, unstable, name, username, email, is_nixos, configDir, ... }:
 
 {
   nixpkgs.config.allowUnfree = true;
@@ -25,6 +25,7 @@
     element-desktop
     ffmpeg
     firefox
+    unstable.foliate
     gittyup
     gnome.gnome-boxes
     gnome-extension-manager
