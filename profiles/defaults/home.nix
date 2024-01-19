@@ -38,6 +38,8 @@
     lutris
     marker
     neofetch
+    nerdfonts
+    nurl
     openssl
     p7zip
     python3
@@ -54,6 +56,7 @@
     wget
     wineWowPackages.stable
     winetricks
+    xivlauncher
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
