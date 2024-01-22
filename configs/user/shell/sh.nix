@@ -1,20 +1,19 @@
-{ config, lib, pkgs, is_nixos, configDir, ... }:
+{ config, lib, pkgs, is_nixos, configDir, home_profile, ... }:
   let 
     default = {
       ll = "ls -al";
-      nix-flake-up = "nix flake update --flake " + configDir;
-      nix-home-up = "home-manager switch --flake " + configDir + "#username";
+      flake-up = "nix flake update --flake " + configDir;
+      home-up = "home-manager switch --flake " + configDir + "#" + home_profile;
     };
 
     # Bash commands for NixOS only
     nixos = {
-      nix-system-up = "sudo nixos-rebuild switch --flake " + configDir + "#hostname";
-      nix-full-up = "nix-flake-up && nix-system-up && nix-home-up";
+      system-up = "sudo nixos-rebuild switch --flake " + configDir;
     };
       
-    # Bash commands for other distros
-    home-only = {
-      nix-full-up = "nix-flake-up && nix-home-up";
+    # Bash commands for Nix PM only
+    pm-only = {
+      full-up = "flake-up && home-up";
     };
   in
 {
@@ -24,7 +23,7 @@
     shellAliases = if is_nixos then (
       lib.mkMerge [default nixos]
     ) else (
-      lib.mkMerge [default home-only]
+      lib.mkMerge [default pm-only]
     );
 
     sessionVariables = {

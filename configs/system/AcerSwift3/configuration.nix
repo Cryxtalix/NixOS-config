@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, lib, pkgs, timezone, locale, name, hostname, ... }:
+{ config, lib, pkgs, timezone, locale, username, hostname, ... }:
 
 {
   imports =
@@ -151,7 +151,7 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.cryxtalix = {
     isNormalUser = true;
-    description = name;
+    description = username;
     extraGroups = [ "networkmanager" "wheel" ];
     # User packages, use home-manager
     packages = with pkgs; [

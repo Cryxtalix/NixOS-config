@@ -1,4 +1,4 @@
-{ config, pkgs, unstable, name, username, email, is_nixos, configDir, ... }:
+{ config, pkgs, unstable, username, is_nixos, configDir, home_profile, ... }:
 
 {
   nixpkgs.config.allowUnfree = true;
