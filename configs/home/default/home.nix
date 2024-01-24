@@ -28,6 +28,7 @@
     unstable.foliate
     gittyup
     gnome.gnome-boxes
+    gnome.gnome-tweaks
     gnome-extension-manager
     gnomeExtensions.alphabetical-app-grid
     gnomeExtensions.blur-my-shell
@@ -47,7 +48,6 @@
     qbittorrent-qt5
     qemu
     realvnc-vnc-viewer
-    steam
     switcheroo-control
     telegram-desktop
     unrar

@@ -3,6 +3,7 @@
     shellAliases_default = {
       ll = "ls -al";
       flake-up = "nix flake update --flake " + configDir;
+      nv-gpu = "watch -n1 nvidia-smi";
     };
 
     shellAliases_nixos = {
@@ -22,11 +23,17 @@
       system-up() {
         sudo nixos-rebuild switch --flake ${configDir}/.#"$1"
       }
+      full-up() {
+        flake-up && system-up "$1" && home-up "$2"
+      }
     '';
 
     initExtra_nixpm = ''
       home-up() {
         home-manager switch --flake ${configDir}/.#"$1"
+      }
+      full-up() {
+        flake-up && home-up "$1"
       }
     '';
   in

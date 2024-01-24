@@ -4,16 +4,20 @@ Uses standalone home-manager and flakes.
 ## To update flake:
 *Fetches latest versions of nixpkgs and dependencies*
 
-$ `nix-flake-up`
+$ `flake-up`
 
 ## To upgrade system packages:
-$ `nix-system-up`
+$ `system-up <system_profile_name>`
 
 ## To upgrade home packages:
-$ `nix-home-up`
+$ `home-up <home_profile_name>`
 
 ## Or to update and upgrade entire system:
-$ `nix-full-up`
+* For NixOS systems:
+ * $ `full-up <system_profile_name> <home_profile_name>`
+
+* For Nix Package Manager systems:
+ * $ `full-up <home_profile_name>`
 
 ## To start development environment:
 *Convenient env, use dev templates for project specific envs*
