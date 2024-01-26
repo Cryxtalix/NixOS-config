@@ -7,9 +7,11 @@
     };
 
     shellAliases_nixos = {
+      nix-cg = "sudo nix-collect-garbage --delete-older-than 7d";
     };
       
     shellAliases_nixpm = {
+      nix-cg = "nix-collect-garbage --delete-older-than 7d";
     };
 
     initExtra_default = ''
