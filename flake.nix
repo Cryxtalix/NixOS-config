@@ -35,7 +35,6 @@
           inherit timezone;
           inherit locale;
           inherit username;
-          hostname = "AcerSwift3";
         };
       };
     };
@@ -52,7 +51,6 @@
           inherit username;
           inherit configDir;
           is_nixos = true;
-          home_profile = "default-nixos";
         };
       };
 
@@ -66,7 +64,6 @@
           inherit username;
           inherit configDir;
           is_nixos = false;
-          home_profile = "default";
         };
       };
     };

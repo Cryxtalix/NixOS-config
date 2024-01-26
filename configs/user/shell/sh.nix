@@ -1,4 +1,4 @@
-{ config, lib, pkgs, is_nixos, configDir, home_profile, ... }:
+{ config, lib, pkgs, is_nixos, configDir, ... }:
   let 
     shellAliases_default = {
       ll = "ls -al";
