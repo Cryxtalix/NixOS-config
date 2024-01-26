@@ -1,10 +1,7 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-
 { config, lib, pkgs, timezone, locale, username, hostname, ... }:
 
 {
+  # ---------------------------SYSTEM SETTINGS START---------------------------
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
@@ -13,8 +10,12 @@
   nix = {
     settings = {
       auto-optimise-store = true;
-      # Enable Flakes and the new command-line tool
       experimental-features = [ "nix-command" "flakes" ];
+    };
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 7d";
     };
     package = pkgs.nixFlakes;
   };
@@ -22,8 +23,8 @@
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-
   boot.initrd.luks.devices."luks-9afc09d7-6a1a-45df-9caf-036b6503ab56".device = "/dev/disk/by-uuid/9afc09d7-6a1a-45df-9caf-036b6503ab56";
+
   networking.hostName = hostname; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -51,8 +52,18 @@
     LC_TELEPHONE = locale;
     LC_TIME = locale;
   };
+  # ---------------------------SYSTEM SETTINGS END---------------------------
 
-  # ---------------------------DISPLAY OPTIONS---------------------------
+  # ---------------------------ADD USERS START---------------------------
+  # Don't forget to set a password with ‘passwd’.
+  /* users.users.cryxtalix = {
+    isNormalUser = true;
+    description = username;
+    extraGroups = [ "networkmanager" "wheel" ];
+  }; */
+  # ---------------------------ADD USERS END---------------------------
+
+  # ---------------------------DISPLAY OPTIONS START---------------------------
   services.xserver = {
     # Enable the X11 windowing system.
     enable = true;
@@ -147,16 +158,6 @@
   # ---------------------------PACKAGES START---------------------------
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
-
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.cryxtalix = {
-    isNormalUser = true;
-    description = username;
-    extraGroups = [ "networkmanager" "wheel" ];
-    # User packages, use home-manager
-    packages = with pkgs; [
-    ];
-  };
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
