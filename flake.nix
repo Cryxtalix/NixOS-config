@@ -35,6 +35,7 @@
           inherit timezone;
           inherit locale;
           inherit username;
+          hostname = "AcerSwift3";
         };
       };
     };
