@@ -9,7 +9,5 @@ nix-channel --update &&
 nix-shell '<home-manager>' -A install &&
 mkdir ~/.config/nix &&
 echo "experimental-features = nix-command flakes" >> ~/.config/nix/nix.conf &&
-cd ~ &&
-git clone https://github.com/Cryxtalix/NixOS-config &&
 cd ~/NixOS-config &&
 home-manager switch -b backup --flake .#minimal
