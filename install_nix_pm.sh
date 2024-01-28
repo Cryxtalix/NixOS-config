@@ -1,4 +1,5 @@
 #! /bin/bash
+# ONLY FOR FIRST TIME INSTALLING NIX PACKAGE MANAGER!
 # Installs Nix package manager and home-manager
 # Installs minimal home-manager config
 

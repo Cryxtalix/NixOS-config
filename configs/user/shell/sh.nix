@@ -26,7 +26,7 @@
         sudo nixos-rebuild switch --flake ${configDir}/.#"$1"
       }
       nix-full-up() {
-        flake-up && system-up "$1" && home-up "$2"
+        nix-flake-up && nix-system-up "$1" && nix-home-up "$2"
       }
     '';
 
@@ -35,7 +35,7 @@
         home-manager switch --flake ${configDir}/.#"$1"
       }
       nix-full-up() {
-        flake-up && home-up "$1"
+        nix-flake-up && nix-home-up "$1"
       }
     '';
   in

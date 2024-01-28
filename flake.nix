@@ -38,6 +38,20 @@
           hostname = "AcerSwift3";
         };
       };
+
+      nixvm = lib.nixosSystem {
+        inherit system;
+        modules = [
+          (./configs/system/NixVM/configuration.nix)
+        ];
+        specialArgs = {
+          inherit timezone;
+          inherit locale;
+          inherit username;
+          hostname = "NixVM";
+        };
+      };
+      
     };
 
     homeConfigurations = {
@@ -67,6 +81,20 @@
           is_nixos = false;
         };
       };
+
+      minimal = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+        modules = [
+          (./configs/home/minimal/home.nix)
+        ];
+        extraSpecialArgs = {
+          inherit unstable;
+          inherit username;
+          inherit configDir;
+          is_nixos = true;
+        };
+      };
+
     };
 
     # Development environments
