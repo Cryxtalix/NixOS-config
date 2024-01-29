@@ -56,7 +56,7 @@
 
     homeConfigurations = {
 
-      default-nixos = home-manager.lib.homeManagerConfiguration {
+      os-default = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         modules = [
           (./configs/home/default/home.nix)
@@ -79,6 +79,19 @@
           inherit username;
           inherit configDir;
           is_nixos = false;
+        };
+      };
+
+      os-minimal = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+        modules = [
+          (./configs/home/minimal/home.nix)
+        ];
+        extraSpecialArgs = {
+          inherit unstable;
+          inherit username;
+          inherit configDir;
+          is_nixos = true;
         };
       };
 
