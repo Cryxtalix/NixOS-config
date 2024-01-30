@@ -1,7 +1,7 @@
 {
   description = "MyFlake";
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, ... }:
+  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, sops-nix, ... }:
 
     let
     /* 
@@ -73,6 +73,7 @@
         inherit pkgs;
         modules = [
           (./configs/home/default/home.nix)
+          sops-nix.homeManagerModules.sops
         ];
         extraSpecialArgs = {
           inherit unstable;
@@ -123,6 +124,7 @@
       url = "github:nix-community/home-manager/release-23.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    sops-nix.url = "github:Mic92/sops-nix";
   };
 
 }

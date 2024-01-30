@@ -1,8 +1,15 @@
 { config, pkgs, unstable, username, is_nixos, configDir, ... }:
 
 {
-  nixpkgs.config.allowUnfree = true;
+  # SOPS
+  systemd.user.services.mbsync.Unit.After = [ "sops-nix.service" ];
+  sops = {
+    age.keyFile = "/home/" + username + "/.config/sops/age/keys.txt";
+    defaultSopsFile = ../../../secrets/secrets.yaml;
+    defaultSopsFormat = "yaml";
+  };
 
+  nixpkgs.config.allowUnfree = true;
   home.username = username;
   home.homeDirectory = "/home/" + username;
   home.stateVersion = "23.11"; # Do not change
