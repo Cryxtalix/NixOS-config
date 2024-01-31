@@ -219,6 +219,7 @@
     gnome.gnome-music
     gnome.gnome-weather
     gnome.simple-scan
+    snapshot
   ];
   # ---------------------------PACKAGES END---------------------------
 

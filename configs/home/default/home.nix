@@ -24,7 +24,7 @@
   # Programs added here are managed by home-manager
   imports = [
     ../../user/shell/sh.nix
-    ../../user/editor/neovim.nix
+    # ../../user/editor/neovim.nix
     ../../user/apps/git.nix
   ];
 
