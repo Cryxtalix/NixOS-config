@@ -18,9 +18,7 @@
 
   # Installed packages
   home.packages = with pkgs; [
-    openssl
-    htop
-    wget
+    firefox
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
