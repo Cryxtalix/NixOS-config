@@ -20,6 +20,9 @@
       nix-dev() {
         nix develop ${configDir}/.#"$1"
       }
+      nix-home-up() {
+        home-manager switch --flake ${configDir}/.#"$1"
+      }
     '';
 
     initExtra_nixos = ''
@@ -32,9 +35,6 @@
     '';
 
     initExtra_nixpm = ''
-      nix-home-up() {
-        home-manager switch --flake ${configDir}/.#"$1"
-      }
       nix-full-up() {
         nix-flake-up && nix-home-up "$1"
       }
