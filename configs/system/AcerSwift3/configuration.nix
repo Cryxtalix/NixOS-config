@@ -10,7 +10,7 @@
   nix = {
     settings = {
       auto-optimise-store = true;
-      experimental-features = [ "nix-command" "flakes" ];
+      experimental-features = [ "nix-command" "flakes" "podman" ];
     };
     gc = {
       automatic = true;
@@ -53,6 +53,20 @@
     LC_TIME = locale;
   };
   # ---------------------------SYSTEM SETTINGS END---------------------------
+
+  # ---------------------------FIREWALL SETTINGS START---------------------------
+  networking.firewall = {
+    enable = true;
+    allowedTCPPorts = [];
+    allowedTCPPortRanges = [
+      { from = 1714; to = 1764; }
+    ];
+    allowedUDPPorts = [];
+    allowedUDPPortRanges = [
+      { from = 1714; to = 1764; }
+    ]
+  }
+  # ---------------------------FIREWALL SETTINGS END---------------------------
 
   # ---------------------------ADD USERS START---------------------------
   # Don't forget to set a password with ‘passwd’.
@@ -162,12 +176,24 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+    distrobox
     git
+    home-manager
+    openssl
+    podman
     switcheroo-control
+    wget
   ];
 
   # Program enable
-  services.switcherooControl.enable = true;
+  services = {
+    switcherooControl.enable = true;
+    openssh.enable = true;
+  };
+  virtualisation.podman = {
+  	enable = true;
+  	enableNvidia = true;
+  };
 
   # Remove unwanted packages
   services.xserver.excludePackages = [ pkgs.xterm ];
@@ -194,17 +220,6 @@
   #   enable = true;
   #   enableSSHSupport = true;
   # };
-
-  # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

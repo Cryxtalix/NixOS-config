@@ -25,17 +25,6 @@
   boot.loader.grub.device = "/dev/vda";
   boot.loader.grub.useOSProber = true;
 
-  boot.initrd.luks.devices."luks-2b8b3184-6e61-4b2b-9d0d-4f2bf7478d06".device = "/dev/disk/by-uuid/2b8b3184-6e61-4b2b-9d0d-4f2bf7478d06";
-  # Setup keyfile
-  boot.initrd.secrets = {
-    "/crypto_keyfile.bin" = null;
-  };
-
-  boot.loader.grub.enableCryptodisk=true;
-
-  boot.initrd.luks.devices."luks-7b694112-f069-47c3-8b0c-b411ba4f533d".keyFile = "/crypto_keyfile.bin";
-  boot.initrd.luks.devices."luks-2b8b3184-6e61-4b2b-9d0d-4f2bf7478d06".keyFile = "/crypto_keyfile.bin";
-
   networking.hostName = hostname; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -63,18 +52,28 @@
     LC_TELEPHONE = locale;
     LC_TIME = locale;
   };
-  
-  # Workaround for GNOME autologin: https://github.com/NixOS/nixpkgs/issues/103746#issuecomment-945091229
-  systemd.services."getty@tty1".enable = false;
-  systemd.services."autovt@tty1".enable = false;
   # ---------------------------SYSTEM SETTINGS END---------------------------
+
+    # ---------------------------FIREWALL SETTINGS START---------------------------
+  /* networking.firewall = {
+    enable = true;
+    allowedTCPPorts = [];
+    allowedTCPPortRanges = [
+      { from = 1714; to = 1764; }
+    ];
+    allowedUDPPorts = [];
+    allowedUDPPortRanges = [
+      { from = 1714; to = 1764; }
+    ]
+  } */
+  # ---------------------------FIREWALL SETTINGS END---------------------------
 
   # ---------------------------ADD USERS START---------------------------
   # Don't forget to set a password with ‘passwd’.
   users.users.cryxtalix = {
     isNormalUser = true;
     description = username;
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "podman" ];
   };
   # ---------------------------ADD USERS END---------------------------
 
@@ -127,18 +126,24 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+    distrobox
     git
     home-manager
-    spice
-    spice-gtk
-    switcheroo-control
+    openssl
+    podman
+    wget
   ];
 
   # Program enable
   services = {
+    #openssh.enable = true;
     switcherooControl.enable = true;
     spice-webdavd.enable = true;
     spice-vdagentd.enable = true;
+  };
+  virtualisation.podman = {
+  	enable = true;
+  	enableNvidia = true;
   };
 
   # Remove unwanted packages
@@ -166,17 +171,6 @@
   #   enable = true;
   #   enableSSHSupport = true;
   # };
-
-  # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
