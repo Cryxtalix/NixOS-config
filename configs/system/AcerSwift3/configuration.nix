@@ -10,7 +10,12 @@
   nix = {
     settings = {
       auto-optimise-store = true;
-      experimental-features = [ "nix-command" "flakes" "podman" ];
+      experimental-features = [ 
+        "nix-command"
+        "flakes"
+        "podman"
+        "vboxusers"
+      ];
     };
     gc = {
       automatic = true;
@@ -65,7 +70,7 @@
     allowedUDPPortRanges = [
       { from = 1714; to = 1764; }
     ]
-  }
+  };
   # ---------------------------FIREWALL SETTINGS END---------------------------
 
   # ---------------------------ADD USERS START---------------------------
@@ -176,11 +181,9 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    distrobox
     git
     home-manager
     openssl
-    podman
     switcheroo-control
     wget
   ];
@@ -190,9 +193,15 @@
     switcherooControl.enable = true;
     openssh.enable = true;
   };
-  virtualisation.podman = {
-  	enable = true;
-  	enableNvidia = true;
+  virtualisation = {
+    virtualbox = {
+      host.enable = true;
+      guest.enable = true;
+    };
+    podman = {
+  	  enable = true;
+  	  enableNvidia = true;
+    };
   };
 
   # Remove unwanted packages

@@ -34,6 +34,7 @@
     chromium
     ddrescue
     discord
+    distrobox
     element-desktop
     ffmpeg
     firefox
@@ -56,6 +57,7 @@
     nurl
     openssl
     p7zip
+    podman
     python3
     qbittorrent-qt5
     qemu
@@ -63,6 +65,8 @@
     switcheroo-control
     telegram-desktop
     unrar
+    virtualboxExtpack
+    virtualboxWithExtpack
     virt-manager
     vlc
     vscode

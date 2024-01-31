@@ -65,7 +65,7 @@
     allowedUDPPortRanges = [
       { from = 1714; to = 1764; }
     ]
-  } */
+  }; */
   # ---------------------------FIREWALL SETTINGS END---------------------------
 
   # ---------------------------ADD USERS START---------------------------
@@ -126,11 +126,9 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    distrobox
     git
     home-manager
     openssl
-    podman
     wget
   ];
 
