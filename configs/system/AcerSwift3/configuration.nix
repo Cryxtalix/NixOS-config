@@ -1,6 +1,10 @@
 { config, lib, pkgs, timezone, locale, username, hostname, ... }:
 
 {
+  imports = [
+    ./hardware-configuration.nix
+  ];
+
   # ---------------------------BOOTLOADER START---------------------------
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -8,11 +12,6 @@
   # ---------------------------BOOTLOADER END---------------------------
 
   # ---------------------------SYSTEM START---------------------------
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
-
   nix = {
     settings = {
       auto-optimise-store = true;
