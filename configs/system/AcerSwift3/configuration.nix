@@ -1,7 +1,13 @@
 { config, lib, pkgs, timezone, locale, username, hostname, ... }:
 
 {
-  # ---------------------------SYSTEM SETTINGS START---------------------------
+  # ---------------------------BOOTLOADER START---------------------------
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
+  boot.initrd.luks.devices."luks-9afc09d7-6a1a-45df-9caf-036b6503ab56".device = "/dev/disk/by-uuid/9afc09d7-6a1a-45df-9caf-036b6503ab56";
+  # ---------------------------BOOTLOADER END---------------------------
+
+  # ---------------------------SYSTEM START---------------------------
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
@@ -22,11 +28,6 @@
     };
     package = pkgs.nixFlakes;
   };
-
-  # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-  boot.initrd.luks.devices."luks-9afc09d7-6a1a-45df-9caf-036b6503ab56".device = "/dev/disk/by-uuid/9afc09d7-6a1a-45df-9caf-036b6503ab56";
 
   networking.hostName = hostname; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -55,9 +56,9 @@
     LC_TELEPHONE = locale;
     LC_TIME = locale;
   };
-  # ---------------------------SYSTEM SETTINGS END---------------------------
+  # ---------------------------SYSTEM END---------------------------
 
-  # ---------------------------FIREWALL SETTINGS START---------------------------
+  # ---------------------------FIREWALL START---------------------------
   networking.firewall = {
     enable = true;
     allowedTCPPorts = [];
@@ -69,9 +70,9 @@
       { from = 1714; to = 1764; }
     ]
   };
-  # ---------------------------FIREWALL SETTINGS END---------------------------
+  # ---------------------------FIREWALL END---------------------------
 
-  # ---------------------------ADD USERS START---------------------------
+  # ---------------------------USERS START---------------------------
   # Don't forget to set a password with ‘passwd’.
   users.users.cryxtalix = {
     isNormalUser = true;
@@ -83,9 +84,9 @@
       "vboxusers"
     ];
   };
-  # ---------------------------ADD USERS END---------------------------
+  # ---------------------------USERS END---------------------------
 
-  # ---------------------------DISPLAY OPTIONS START---------------------------
+  # ---------------------------DISPLAY START---------------------------
   services.xserver = {
     # Enable the X11 windowing system.
     enable = true;
@@ -98,7 +99,7 @@
     layout = "us";
     xkbVariant = "";
   };
-  # ---------------------------DISPLAY OPTIONS END---------------------------
+  # ---------------------------DISPLAY END---------------------------
 
   # --------------------------NVIDIA DRIVERS START---------------------------
   # Enable OpenGL
@@ -150,7 +151,7 @@
   };
   # ---------------------------NVIDIA DRIVERS END---------------------------
 
-  # ---------------------------SOUND OPTIONS START---------------------------
+  # ---------------------------SOUND START---------------------------
   # Enable sound with pipewire.
   sound.enable = true;
   hardware.pulseaudio.enable = false;
@@ -167,15 +168,15 @@
     # no need to redefine it in your config for now)
     #media-session.enable = true;
   };
-  # ---------------------------SOUND OPTIONS END---------------------------
+  # ---------------------------SOUND END---------------------------
 
-  # ---------------------------MISC OPTIONS START---------------------------
+  # ---------------------------MISC START---------------------------
   # Enable CUPS to print documents.
   services.printing.enable = false;
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
-  # ---------------------------MISC OPTIONS END---------------------------
+  # ---------------------------MISC END---------------------------
 
   # ---------------------------PACKAGES START---------------------------
   # Allow unfree packages
