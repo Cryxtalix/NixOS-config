@@ -13,8 +13,6 @@
       experimental-features = [ 
         "nix-command"
         "flakes"
-        "podman"
-        "vboxusers"
       ];
     };
     gc = {
@@ -75,11 +73,16 @@
 
   # ---------------------------ADD USERS START---------------------------
   # Don't forget to set a password with ‘passwd’.
-  /* users.users.cryxtalix = {
+  users.users.cryxtalix = {
     isNormalUser = true;
     description = username;
-    extraGroups = [ "networkmanager" "wheel" ];
-  }; */
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "podman"
+      "vboxusers"
+    ];
+  };
   # ---------------------------ADD USERS END---------------------------
 
   # ---------------------------DISPLAY OPTIONS START---------------------------

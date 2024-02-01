@@ -10,7 +10,10 @@
   nix = {
     settings = {
       auto-optimise-store = true;
-      experimental-features = [ "nix-command" "flakes" ];
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
     };
     gc = {
       automatic = true;
@@ -73,7 +76,11 @@
   users.users.cryxtalix = {
     isNormalUser = true;
     description = username;
-    extraGroups = [ "networkmanager" "wheel" "podman" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "podman"
+    ];
   };
   # ---------------------------ADD USERS END---------------------------
 
