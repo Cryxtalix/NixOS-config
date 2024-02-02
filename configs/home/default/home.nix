@@ -19,7 +19,7 @@
   programs.home-manager.enable = true; # Do not change
   targets.genericLinux.enable = if is_nixos then false else true;
 
-  sops.secrets.example_key = { };
+  #sops.secrets.example_key = { };
 
   # Programs added here are managed by home-manager
   imports = [
