@@ -1,4 +1,4 @@
-{ config, pkgs, pkgs_unstable, username, is_nixos, configDir, ... }:
+{ config, pkgs, unstable, username, is_nixos, configDir, ... }:
 
   let
     sops = {
@@ -38,7 +38,7 @@
     element-desktop
     ffmpeg
     firefox
-    pkgs_unstable.foliate
+    unstable.foliate
     gittyup
     gnome.gnome-boxes
     gnome.gnome-tweaks

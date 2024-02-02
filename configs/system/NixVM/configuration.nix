@@ -71,33 +71,16 @@
   }; */
   # ---------------------------FIREWALL END---------------------------
 
-  # ---------------------------SECRETS START---------------------------
-  sops = {
-    age.keyFile = "/home/" + username + "/.config/sops/age/keys.txt";
-    defaultSopsFile = ../../../secrets/secrets.yaml;
-    defaultSopsFormat = "yaml";
-
-    secrets.example_key = {
-      neededForUsers = true;
-    };
-  };
-  # ---------------------------SECRETS END---------------------------
-
   # ---------------------------USERS START---------------------------
-  users = {
-    mutableUsers = false;
-    
-    users.cryxtalix = {
-      description = "Main user";
-      isNormalUser = true;
-      hashedPasswordFile = config.sops.secrets.example_key.path;
-      extraGroups = [
-        "networkmanager"
-        "wheel"
-        "podman"
-      ];
-    };
-
+  # Don't forget to set a password with ‘passwd’.
+  users.users.cryxtalix = {
+    isNormalUser = true;
+    description = username;
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "podman"
+    ];
   };
   # ---------------------------USERS END---------------------------
 
