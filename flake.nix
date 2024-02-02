@@ -13,7 +13,7 @@
       # System settings
       lib = nixpkgs.lib;
       pkgs = import nixpkgs { inherit system; };
-      unstable = import nixpkgs-unstable { inherit system; };
+      pkgs_unstable = import nixpkgs-unstable { inherit system; };
       system = "x86_64-linux";
       timezone = "Asia/Singapore";
       locale = "en_SG.UTF-8";
@@ -62,7 +62,7 @@
           (./configs/home/default/home.nix)
         ];
         extraSpecialArgs = {
-          inherit unstable;
+          inherit pkgs_unstable;
           inherit username;
           inherit configDir;
           is_nixos = true;
@@ -76,7 +76,7 @@
           sops-nix.homeManagerModules.sops
         ];
         extraSpecialArgs = {
-          inherit unstable;
+          inherit pkgs_unstable;
           inherit username;
           inherit configDir;
           is_nixos = false;
@@ -89,7 +89,7 @@
           (./configs/home/minimal/home.nix)
         ];
         extraSpecialArgs = {
-          inherit unstable;
+          inherit pkgs_unstable;
           inherit username;
           inherit configDir;
           is_nixos = true;
@@ -102,7 +102,7 @@
           (./configs/home/minimal/home.nix)
         ];
         extraSpecialArgs = {
-          inherit unstable;
+          inherit pkgs_unstable;
           inherit username;
           inherit configDir;
           is_nixos = true;
