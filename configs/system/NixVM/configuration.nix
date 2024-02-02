@@ -71,11 +71,27 @@
   }; */
   # ---------------------------FIREWALL END---------------------------
 
+  # ---------------------------SECRETS START---------------------------
+  sops = {
+    age.keyFile = "/home/${username}/.config/sops/age/keys.txt";
+    defaultSopsFile = ../../../secrets/secrets.yaml;
+    defaultSopsFormat = "yaml";
+      
+    secrets = {
+      cryxtalix_password = {
+        neededForUsers = true;
+      };
+    };
+  };
+  # ---------------------------SECRETS END---------------------------
+
   # ---------------------------USERS START---------------------------
-  # Don't forget to set a password with ‘passwd’.
-  users.users.cryxtalix = {
+  users.mutableUsers = false;
+  
+  users.users."${username}" = {
+    description = "Main user";
     isNormalUser = true;
-    description = username;
+    hashedPasswordFile = config.sops.secrets.cryxtalix_password.path;
     extraGroups = [
       "networkmanager"
       "wheel"
@@ -136,6 +152,7 @@
     git
     home-manager
     openssl
+    sops
     wget
   ];
 

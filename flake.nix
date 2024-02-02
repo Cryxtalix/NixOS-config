@@ -4,12 +4,6 @@
   outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, sops-nix, ... }:
 
     let
-    /* 
-    DO NOT KEEP PASSWORDS AND API KEYS HERE! Use proper secrets encryption like:
-    sops-nix: https://github.com/Mic92/sops-nix
-    OR
-    agenix: https://github.com/ryantm/agenix
-    */
       # System settings
       lib = nixpkgs.lib;
       pkgs = import nixpkgs { inherit system; };
@@ -30,6 +24,7 @@
         inherit system;
         modules = [
           (./configs/system/AcerSwift3/configuration.nix)
+          sops-nix.nixosModules.sops
         ];
         specialArgs = {
           inherit timezone;
@@ -43,6 +38,7 @@
         inherit system;
         modules = [
           (./configs/system/NixVM/configuration.nix)
+          sops-nix.nixosModules.sops
         ];
         specialArgs = {
           inherit timezone;
@@ -60,6 +56,7 @@
         inherit pkgs;
         modules = [
           (./configs/home/default/home.nix)
+          sops-nix.homeManagerModules.sops
         ];
         extraSpecialArgs = {
           inherit pkgs_unstable;
@@ -87,6 +84,7 @@
         inherit pkgs;
         modules = [
           (./configs/home/minimal/home.nix)
+          sops-nix.homeManagerModules.sops
         ];
         extraSpecialArgs = {
           inherit pkgs_unstable;
@@ -100,6 +98,7 @@
         inherit pkgs;
         modules = [
           (./configs/home/minimal/home.nix)
+          sops-nix.homeManagerModules.sops
         ];
         extraSpecialArgs = {
           inherit pkgs_unstable;
@@ -124,7 +123,10 @@
       url = "github:nix-community/home-manager/release-23.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    sops-nix.url = "github:Mic92/sops-nix";
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
 }

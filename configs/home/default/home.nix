@@ -1,16 +1,16 @@
 { config, pkgs, pkgs_unstable, username, is_nixos, configDir, ... }:
 
   let
-    sops = {
+    /* sops = {
       age.keyFile = "/home/" + username + "/.config/sops/age/keys.txt";
       defaultSopsFile = ../../../secrets/secrets.yaml;
       defaultSopsFormat = "yaml";
-    };
+    }; */
   in
 
 {
   # SOPS
-  systemd.user.services.mbsync.Unit.After = [ "sops-nix.service" ];
+  #systemd.user.services.mbsync.Unit.After = [ "sops-nix.service" ];
 
   nixpkgs.config.allowUnfree = true;
   home.username = username;
@@ -62,6 +62,7 @@
     qbittorrent-qt5
     qemu
     realvnc-vnc-viewer
+    sops
     switcheroo-control
     telegram-desktop
     unrar
