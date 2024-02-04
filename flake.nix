@@ -27,9 +27,7 @@
           sops-nix.nixosModules.sops
         ];
         specialArgs = {
-          inherit timezone;
-          inherit locale;
-          inherit username;
+          inherit timezone locale username;
           hostname = "AcerSwift3";
         };
       };
@@ -41,9 +39,7 @@
           sops-nix.nixosModules.sops
         ];
         specialArgs = {
-          inherit timezone;
-          inherit locale;
-          inherit username;
+          inherit timezone locale username;
           hostname = "NixVM";
         };
       };
@@ -58,9 +54,7 @@
           (./configs/home/default/home.nix)
         ];
         extraSpecialArgs = {
-          inherit pkgs_unstable;
-          inherit username;
-          inherit configDir;
+          inherit pkgs_unstable username configDir;
           is_nixos = true;
         };
       };
@@ -73,9 +67,7 @@
           sops-nix.homeManagerModules.sops
         ];
         extraSpecialArgs = {
-          inherit pkgs_unstable;
-          inherit username;
-          inherit configDir;
+          inherit pkgs_unstable username configDir;
           is_nixos = false;
         };
       };
@@ -86,9 +78,7 @@
           (./configs/home/minimal/home.nix)
         ];
         extraSpecialArgs = {
-          inherit pkgs_unstable;
-          inherit username;
-          inherit configDir;
+          inherit pkgs_unstable username configDir;
           is_nixos = true;
         };
       };
@@ -97,12 +87,11 @@
         inherit pkgs;
         modules = [
           (./configs/home/minimal/home.nix)
+          (./configs/home/modules/sops.nix)
           sops-nix.homeManagerModules.sops
         ];
         extraSpecialArgs = {
-          inherit pkgs_unstable;
-          inherit username;
-          inherit configDir;
+          inherit pkgs_unstable username configDir;
           is_nixos = true;
         };
       };
