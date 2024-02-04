@@ -1,25 +1,12 @@
 { config, pkgs, pkgs_unstable, username, is_nixos, configDir, ... }:
 
-  let
-    /* sops = {
-      age.keyFile = "/home/" + username + "/.config/sops/age/keys.txt";
-      defaultSopsFile = ../../../secrets/secrets.yaml;
-      defaultSopsFormat = "yaml";
-    }; */
-  in
-
 {
-  # SOPS
-  #systemd.user.services.mbsync.Unit.After = [ "sops-nix.service" ];
-
   nixpkgs.config.allowUnfree = true;
   home.username = username;
-  home.homeDirectory = "/home/" + username;
+  home.homeDirectory = "/home/${username}";
   home.stateVersion = "23.11"; # Do not change
   programs.home-manager.enable = true; # Do not change
   targets.genericLinux.enable = if is_nixos then false else true;
-
-  #sops.secrets.example_key = { };
 
   # Programs added here are managed by home-manager
   imports = [
