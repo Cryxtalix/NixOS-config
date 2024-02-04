@@ -2,9 +2,8 @@
   let 
     shellAliases_default = {
       ll = "ls -al";
-      nix-flake-up = "nix flake update " + configDir;
+      nix-flake-up = "nix flake update ${configDir}";
       nv-gpu = "watch -n1 nvidia-smi";
-      #print_test = "echo " + sops.secrets.example_key;
     };
 
     shellAliases_nixos = {
