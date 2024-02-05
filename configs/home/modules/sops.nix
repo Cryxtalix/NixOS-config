@@ -9,7 +9,7 @@
     defaultSymlinkPath = "/run/user/1000/secrets";
     defaultSecretsMountPoint = "/run/user/1000/secrets.d";
 
-    secrets.example_key = {};
+    #secrets.example_key = {};
     # cat /run/user/1000/secrets/example_key
   };
   # systemd.user.services.my_service.Unit.After = [ "sops-nix.service" ];
