@@ -4,6 +4,7 @@
   imports = [
     ./hardware-configuration.nix
     ../modules/nvidia_drivers
+    ../modules/firewall
   ];
 
   # ---------------------------BOOTLOADER START---------------------------
@@ -58,20 +59,6 @@
   };
   # ---------------------------SYSTEM END---------------------------
 
-  # ---------------------------FIREWALL START---------------------------
-  networking.firewall = {
-    enable = true;
-    allowedTCPPorts = [];
-    allowedTCPPortRanges = [
-      { from = 1714; to = 1764; }
-    ];
-    allowedUDPPorts = [];
-    allowedUDPPortRanges = [
-      { from = 1714; to = 1764; }
-    ]
-  };
-  # ---------------------------FIREWALL END---------------------------
-
   # ---------------------------SECRETS START---------------------------
   sops = {
     age.keyFile = "/home/${username}/.config/sops/age/keys.txt";
@@ -97,6 +84,7 @@
       "networkmanager"
       "wheel"
       "podman"
+      "vboxusers"
     ];
   };
   # ---------------------------USERS END---------------------------

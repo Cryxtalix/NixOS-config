@@ -57,20 +57,6 @@
   };
   # ---------------------------SYSTEM END---------------------------
 
-    # ---------------------------FIREWALL START---------------------------
-  /* networking.firewall = {
-    enable = true;
-    allowedTCPPorts = [];
-    allowedTCPPortRanges = [
-      { from = 1714; to = 1764; }
-    ];
-    allowedUDPPorts = [];
-    allowedUDPPortRanges = [
-      { from = 1714; to = 1764; }
-    ]
-  }; */
-  # ---------------------------FIREWALL END---------------------------
-
   # ---------------------------SECRETS START---------------------------
   sops = {
     age.keyFile = "/home/${username}/.config/sops/age/keys.txt";
