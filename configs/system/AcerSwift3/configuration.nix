@@ -3,7 +3,7 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ../modules/nvidia_drivers.nix
+    ../modules/nvidia_drivers
   ];
 
   # ---------------------------BOOTLOADER START---------------------------

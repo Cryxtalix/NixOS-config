@@ -10,9 +10,7 @@
 
   # Programs added here are managed by home-manager
   imports = [
-    ../../packages/shell/sh.nix
-    # ../../packages/editor/neovim.nix
-    ../../packages/others/git.nix
+    ../../packages
   ];
 
   # Installed packages
