@@ -63,7 +63,7 @@
         inherit pkgs;
         modules = [
           (./configs/home/default/home.nix)
-          (./configs/home/modules/sops)
+          (./configs/home/modules/sops-nix)
           sops-nix.homeManagerModules.sops
         ];
         extraSpecialArgs = {
@@ -87,7 +87,7 @@
         inherit pkgs;
         modules = [
           (./configs/home/minimal/home.nix)
-          (./configs/home/modules/sops)
+          (./configs/home/modules/sops-nix)
           sops-nix.homeManagerModules.sops
         ];
         extraSpecialArgs = {
