@@ -2,7 +2,6 @@
 
 {
   nixpkgs.config.allowUnfree = true;
-
   home.username = username;
   home.homeDirectory = "/home/${username}";
   home.stateVersion = "23.11"; # Do not change
@@ -11,15 +10,55 @@
 
   # Programs added here are managed by home-manager
   imports = [
-    ../../packages
+    ../../../packages
   ];
 
   # Installed packages
   home.packages = with pkgs; [
+    arduino
+    chromium
+    ddrescue
+    discord
     distrobox
+    element-desktop
+    ffmpeg
     firefox
+    pkgs_unstable.foliate
+    gittyup
+    gnome.gnome-boxes
+    gnome.gnome-tweaks
+    gnome-extension-manager
+    gnomeExtensions.alphabetical-app-grid
+    gnomeExtensions.blur-my-shell
+    gnomeExtensions.caffeine
+    gnomeExtensions.gsconnect # Check https://userbase.kde.org/KDEConnect#Troubleshooting
+    htop
+    libreoffice
+    libvirt
+    lutris
+    marker
+    neofetch
+    nerdfonts
+    nurl
+    openssl
+    p7zip
     podman
+    python3
+    qbittorrent-qt5
+    qemu
+    realvnc-vnc-viewer
     sops
+    switcheroo-control
+    telegram-desktop
+    unrar
+    virtualbox
+    virt-manager
+    vlc
+    vscode
+    wget
+    wineWowPackages.stable
+    winetricks
+    xivlauncher
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage

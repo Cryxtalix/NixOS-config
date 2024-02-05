@@ -23,7 +23,7 @@
       swift3 = lib.nixosSystem {
         inherit system;
         modules = [
-          (./configs/system/AcerSwift3/configuration.nix)
+          (./hosts/system/AcerSwift3/configuration.nix)
           sops-nix.nixosModules.sops
         ];
         specialArgs = {
@@ -35,7 +35,7 @@
       nixvm = lib.nixosSystem {
         inherit system;
         modules = [
-          (./configs/system/NixVM/configuration.nix)
+          (./hosts/system/NixVM/configuration.nix)
           sops-nix.nixosModules.sops
         ];
         specialArgs = {
@@ -51,7 +51,7 @@
       os-default = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         modules = [
-          (./configs/home/default/home.nix)
+          (./hosts/home/default/home.nix)
         ];
         extraSpecialArgs = {
           inherit pkgs_unstable username configDir;
@@ -62,8 +62,8 @@
       default = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         modules = [
-          (./configs/home/default/home.nix)
-          (./configs/home/modules/sops-nix)
+          (./hosts/home/default/home.nix)
+          (./hosts/home/modules/sops-nix)
           sops-nix.homeManagerModules.sops
         ];
         extraSpecialArgs = {
@@ -75,7 +75,7 @@
       os-minimal = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         modules = [
-          (./configs/home/minimal/home.nix)
+          (./hosts/home/minimal/home.nix)
         ];
         extraSpecialArgs = {
           inherit pkgs_unstable username configDir;
@@ -86,8 +86,8 @@
       minimal = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         modules = [
-          (./configs/home/minimal/home.nix)
-          (./configs/home/modules/sops-nix)
+          (./hosts/home/minimal/home.nix)
+          (./hosts/home/modules/sops-nix)
           sops-nix.homeManagerModules.sops
         ];
         extraSpecialArgs = {
