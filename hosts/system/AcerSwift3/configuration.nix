@@ -155,12 +155,14 @@
     virtualbox = {
       host.enable = true;
       guest.enable = true;
+      guest.x11 = true;
     };
     podman = {
   	  enable = true;
   	  enableNvidia = true;
     };
   };
+  users.extraGroups.vboxusers.members = [ "user-with-access-to-virtualbox" ];
 
   # Remove unwanted packages
   services.xserver.excludePackages = [ pkgs.xterm ];

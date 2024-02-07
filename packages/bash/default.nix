@@ -2,7 +2,7 @@
   let 
     shellAliases_default = {
       ll = "ls -al";
-      nix-flake-up = "nix flake update ${configDir}";
+      nix-flake-up = "(cd ${configDir} && nix flake update)";
       nv-gpu = "watch -n1 nvidia-smi";
     };
 
