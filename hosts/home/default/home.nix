@@ -51,7 +51,7 @@
       switcheroo-control
       telegram-desktop
       unrar
-      virtualbox
+      #virtualbox
       virt-manager
       vlc
       vscode
