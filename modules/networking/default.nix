@@ -1,13 +1,27 @@
 { config, pkgs, hostname, ... }:
 
 {
-  networking.hostName = hostname; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  networking = {
+    hostName = hostname;
+    networkmanager.enable = true;
+    enableIPv6 = true;
+    # wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+    # Configure network proxy if necessary
+    # proxy.default = "http://user:password@proxy:port/";
+    # proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
+    firewall = {
+      enable = true;
+      
+      allowedTCPPorts = [];
+      allowedTCPPortRanges = [
+        { from = 1714; to = 1764; }
+      ];
 
-  # Enable networking
-  networking.networkmanager.enable = true;
+      allowedUDPPorts = [];
+      allowedUDPPortRanges = [
+        { from = 1714; to = 1764; }
+      ]
+    };
+  };
 }

@@ -76,24 +76,6 @@
     };
   };
   users.extraGroups.vboxusers.members = [ "user-with-access-to-virtualbox" ];
-
-  # Remove unwanted packages
-  services.xserver.excludePackages = [ pkgs.xterm ];
-  environment.gnome.excludePackages = with pkgs; [
-    gnome-tour
-    nixos-render-docs
-    gnome.epiphany
-    gnome.geary
-    gnome.seahorse
-    gnome.totem
-    gnome.yelp
-    gnome.gnome-contacts
-    gnome.gnome-maps
-    gnome.gnome-music
-    gnome.gnome-weather
-    gnome.simple-scan
-    snapshot
-  ];
   # ---------------------------PACKAGES END---------------------------
 
   # Some programs need SUID wrappers, can be configured further or are
