@@ -3,7 +3,7 @@
 {
   imports = [
     ./networking
-    ./nix_specific
+    ./nix-specific
     ./sound
     ./system
   ];
