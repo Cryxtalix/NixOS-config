@@ -3,8 +3,10 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ../../modules
-    ../../modules/DE/gnome
+    ../../../modules
+    
+    # Select DE
+    ../../../modules/DE/gnome
   ];
 
   # ---------------------------BOOTLOADER START---------------------------
