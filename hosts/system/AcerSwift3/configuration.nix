@@ -3,9 +3,9 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ../modules
-    ../modules/DE/gnome
-    ../modules/nvidia_drivers
+    ../../modules
+    ../../modules/DE/gnome
+    ../../modules/nvidia_drivers
   ];
 
   # ---------------------------BOOTLOADER START---------------------------
