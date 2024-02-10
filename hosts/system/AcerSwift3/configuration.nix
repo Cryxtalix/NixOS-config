@@ -4,6 +4,7 @@
   imports = [
     ./hardware-configuration.nix
     ../modules
+    ../modules/DE/gnome
     ../modules/nvidia_drivers
   ];
 
@@ -12,42 +13,6 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.initrd.luks.devices."luks-9afc09d7-6a1a-45df-9caf-036b6503ab56".device = "/dev/disk/by-uuid/9afc09d7-6a1a-45df-9caf-036b6503ab56";
   # ---------------------------BOOTLOADER END---------------------------
-
-  # ---------------------------SYSTEM START---------------------------
-  nix = {
-    settings = {
-      auto-optimise-store = true;
-      experimental-features = [ 
-        "nix-command"
-        "flakes"
-      ];
-    };
-    gc = {
-      automatic = true;
-      dates = "weekly";
-      options = "--delete-older-than 7d";
-    };
-    package = pkgs.nixFlakes;
-  };
-
-  # Set your time zone.
-  time.timeZone = timezone;
-
-  # Select internationalisation properties.
-  i18n.defaultLocale = locale;
-
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = locale;
-    LC_IDENTIFICATION = locale;
-    LC_MEASUREMENT = locale;
-    LC_MONETARY = locale;
-    LC_NAME = locale;
-    LC_NUMERIC = locale;
-    LC_PAPER = locale;
-    LC_TELEPHONE = locale;
-    LC_TIME = locale;
-  };
-  # ---------------------------SYSTEM END---------------------------
 
   # ---------------------------SECRETS START---------------------------
   sops = {
@@ -78,29 +43,6 @@
     ];
   };
   # ---------------------------USERS END---------------------------
-
-  # ---------------------------DISPLAY START---------------------------
-  services.xserver = {
-    # Enable the X11 windowing system.
-    enable = true;
-
-    # Enable the GNOME Desktop Environment.
-    displayManager.gdm.enable = true;
-    desktopManager.gnome.enable = true;
-
-    # Configure keymap in X11
-    layout = "us";
-    xkbVariant = "";
-  };
-  # ---------------------------DISPLAY END---------------------------
-
-  # ---------------------------MISC START---------------------------
-  # Enable CUPS to print documents.
-  services.printing.enable = false;
-
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
-  # ---------------------------MISC END---------------------------
 
   # ---------------------------PACKAGES START---------------------------
   # Allow unfree packages
