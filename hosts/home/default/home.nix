@@ -1,20 +1,7 @@
-{ config, pkgs, pkgs_unstable, username, is_nixos, configDir, ... }:
+{ config, lib, pkgs, pkgs_unstable, username, is_nixos, configDir, ... }:
 
-{
-  imports = [
-    ../../../packages
-  ];
-
-  nixpkgs.config.allowUnfree = true;
-  programs.home-manager.enable = true; # Do not change
-  targets.genericLinux.enable = if is_nixos then false else true;
-
-  home = {
-    username = username;
-    homeDirectory = "/home/${username}";
-    stateVersion = "23.11"; # Do not change
-
-    packages = with pkgs; [
+  let
+    pkgs_general = with pkgs; [
       arduino
       chromium
       ddrescue
@@ -40,26 +27,52 @@
       neofetch
       nerdfonts
       nurl
-      openssl
       p7zip
       podman
       python3
       qbittorrent-qt5
       qemu
       realvnc-vnc-viewer
-      sops
-      switcheroo-control
       telegram-desktop
       unrar
-      #virtualbox
       virt-manager
       vlc
       vscode
-      wget
       wineWowPackages.stable
       winetricks
       xivlauncher
     ];
+
+    pkgs_nixos = with pkgs; [
+      virtualbox
+    ];
+
+    pkgs_not_nixos = with pkgs; [
+      openssl
+      sops
+      wget
+    ];
+  in
+
+{
+  imports = [
+    ../../../packages
+  ];
+
+  nixpkgs.config.allowUnfree = true;
+  programs.home-manager.enable = true; # Do not change
+  targets.genericLinux.enable = if is_nixos then false else true;
+
+  home = {
+    username = username;
+    homeDirectory = "/home/${username}";
+    stateVersion = "23.11"; # Do not change
+
+    packages = if is_nixos then (
+      lib.mkMerge [pkgs_general pkgs_nixos]
+    ) else (
+      lib.mkMerge [pkgs_general pkgs_not_nixos]
+    );
 
     file = {
       # dotfiles

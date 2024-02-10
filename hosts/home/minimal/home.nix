@@ -1,5 +1,19 @@
-{ config, pkgs, pkgs_unstable, username, is_nixos, configDir, ... }:
+{ config, lib, pkgs, pkgs_unstable, username, is_nixos, configDir, ... }:
+  let
+    pkgs_general = with pkgs; [
+      distrobox
+      firefox
+      podman
+    ];
 
+    pkgs_nixos = with pkgs; [
+      
+    ];
+
+    pkgs_not_nixos = with pkgs; [
+      sops
+    ];
+  in
 {
   imports = [
     ../../../packages
@@ -14,12 +28,11 @@
     homeDirectory = "/home/${username}";
     stateVersion = "23.11"; # Do not change
 
-    packages = with pkgs; [
-      distrobox
-      firefox
-      podman
-      sops
-    ];
+    packages = if is_nixos then (
+      lib.mkMerge [pkgs_general pkgs_nixos]
+    ) else (
+      lib.mkMerge [pkgs_general pkgs_not_nixos]
+    );
 
     file = {
       # dotfiles
