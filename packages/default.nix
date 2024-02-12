@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ./bash
-    ./git
+    ./bash.nix
+    ./git.nix
   ];
 }

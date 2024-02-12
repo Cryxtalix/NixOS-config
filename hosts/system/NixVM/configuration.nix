@@ -6,7 +6,7 @@
     ../../../modules
     
     # Select DE
-    ../../../modules/DE/gnome
+    ../../../modules/DE/gnome.nix
   ];
 
   # ---------------------------BOOTLOADER START---------------------------

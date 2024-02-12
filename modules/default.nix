@@ -2,9 +2,9 @@
 
 {
   imports = [
-    ./networking
-    ./nix-specific
-    ./sound
-    ./system
+    ./networking.nix
+    ./nix-settings.nix
+    ./sound.nix
+    ./system.nix
   ];
 }
