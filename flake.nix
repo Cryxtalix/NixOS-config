@@ -1,13 +1,13 @@
 {
   description = "MyFlake";
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, sops-nix, ... }:
+  outputs = { self, nixpkgs, ... }@inputs:
 
     let
       # System settings
       lib = nixpkgs.lib;
       pkgs = import nixpkgs { inherit system; };
-      pkgs_unstable = import nixpkgs-unstable { inherit system; };
+      pkgs_unstable = import inputs.nixpkgs-unstable { inherit system; };
       system = "x86_64-linux";
       timezone = "Asia/Singapore";
       locale = "en_SG.UTF-8";
@@ -24,7 +24,7 @@
         inherit system;
         modules = [
           (./hosts/system/AcerSwift3/configuration.nix)
-          sops-nix.nixosModules.sops
+          inputs.sops-nix.nixosModules.sops
         ];
         specialArgs = {
           inherit timezone locale username;
@@ -36,7 +36,7 @@
         inherit system;
         modules = [
           (./hosts/system/NixVM/configuration.nix)
-          sops-nix.nixosModules.sops
+          inputs.sops-nix.nixosModules.sops
         ];
         specialArgs = {
           inherit timezone locale username;
@@ -48,7 +48,7 @@
 
     homeConfigurations = {
 
-      os-default = home-manager.lib.homeManagerConfiguration {
+      os-default = inputs.home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         modules = [
           (./hosts/home/default/home.nix)
@@ -59,11 +59,11 @@
         };
       };
 
-      default = home-manager.lib.homeManagerConfiguration {
+      default = inputs.home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         modules = [
           (./hosts/home/default/home.nix)
-          sops-nix.homeManagerModules.sops
+          inputs.sops-nix.homeManagerModules.sops
         ];
         extraSpecialArgs = {
           inherit pkgs_unstable username configDir;
@@ -71,7 +71,7 @@
         };
       };
 
-      os-minimal = home-manager.lib.homeManagerConfiguration {
+      os-minimal = inputs.home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         modules = [
           (./hosts/home/minimal/home.nix)
@@ -82,11 +82,11 @@
         };
       };
 
-      minimal = home-manager.lib.homeManagerConfiguration {
+      minimal = inputs.home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         modules = [
           (./hosts/home/minimal/home.nix)
-          sops-nix.homeManagerModules.sops
+          inputs.sops-nix.homeManagerModules.sops
         ];
         extraSpecialArgs = {
           inherit pkgs_unstable username configDir;
