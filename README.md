@@ -29,8 +29,8 @@ $ `nix-dev <choice_of_language>`
 
 # For installing nix package manager on another distro:
 **Ensure git is installed!**
-1. Install nix from https://nixos.org/download with `sh <(curl -L https://nixos.org/nix/install) --no-daemon`. Remember to copy and run the command printed in the terminal once this command ends.
-2. Add home-manager channel: `nix-channel --add https://github.com/nix-community/home-manager/archive/release-23.11.tar.gz home-manager`
+1. Install nix from https://zero-to-nix.com/start/install with `curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install`.
+2. Restart shell and add home-manager channel: `nix-channel --add https://github.com/nix-community/home-manager/archive/release-23.11.tar.gz home-manager`
 3. Update nix-channels: `nix-channel --update`
 4. Install home-manager: `nix-shell '<home-manager>' -A install`
 5. Create folder with `mkdir ~/.config/nix`
