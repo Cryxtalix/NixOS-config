@@ -1,8 +1,8 @@
 { config, pkgs, pkgs_unstable, ... }:
   let
     neovim = pkgs.fetchFromGitHub{
-      owner = "";
-      repo = "";
+      owner = "Cryxtalix";
+      repo = "nvim";
       rev = "";
       sha256 = "";
     };
