@@ -79,7 +79,7 @@
     };
 
     sessionVariables = {
-      # EDITOR = "emacs";
+      EDITOR = "neovim";
     };
   };
 
