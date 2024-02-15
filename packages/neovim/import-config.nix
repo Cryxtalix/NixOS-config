@@ -1,3 +1,7 @@
+/* 
+Install neovim and import configuration from github repo 
+*/
+
 { config, pkgs, pkgs_unstable, ... }:
   let
     neovim = pkgs.fetchFromGitHub{

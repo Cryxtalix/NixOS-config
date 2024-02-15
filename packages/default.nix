@@ -4,7 +4,7 @@
   imports = [
     ./bash.nix
     ./git.nix
-    ./neovim
+    ./neovim/install-only.nix
     ./nix-direnv.nix
   ];
 }

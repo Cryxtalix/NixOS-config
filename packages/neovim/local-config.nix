@@ -1,3 +1,8 @@
+/* 
+Install neovim and configuration in ./nvim folder. Contents of the 
+folder will be recursively copied to the ~/.config/nvim.
+*/
+
 { config, pkgs, pkgs_unstable, ... }:
 
 {
