@@ -34,6 +34,7 @@
       qemu
       realvnc-vnc-viewer
       telegram-desktop
+      trayscale
       unrar
       virt-manager
       vlc
