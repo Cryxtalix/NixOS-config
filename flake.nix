@@ -19,14 +19,7 @@
       lib = nixpkgs.lib;
       configDir = "~/NixOS-config"; # Path of this file
 
-      /**
-      * Function: Makes NixOS configs
-      * Arguments: 2
-      *
-      * hostname: Hostname of system and determines folder of config in ./hosts/system/.
-      * system(str) - Machine architecture. E.g. "x86_64-linux".
-      */
-      mkNixosConfig = hostname: system: lib.nixosSystem {
+      mkNixosConfigurations = hostname: system: lib.nixosSystem {
         inherit system;
         modules = [
           (./hosts/system/${hostname}/configuration.nix)
@@ -37,15 +30,7 @@
         };
       };
 
-      /**
-      * Function: Makes standalone home-manager configs.
-      * Arguments: 3
-      *
-      * name(str) - Determines folder of config in ./hosts/home/. E.g. "default".
-      * system(str) - Machine architecture. E.g. "x86_64-linux".
-      * is_nixos(bool) - Whether home-manager is installed on nixos.
-      */
-      mkHomeConfig = name: system: is_nixos: inputs.home-manager.lib.homeManagerConfiguration {
+      mkHomeConfigurations = name: system: is_nixos: inputs.home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.${system};
         modules = [ 
           ./hosts/home/${name}/home.nix 
@@ -66,15 +51,15 @@
     in
   {
     nixosConfigurations = {
-      swift3 = mkNixosConfig "AcerSwift3" "x86_64-linux";
-      nixvm = mkNixosConfig "NixVM" "x86_64-linux";  
+      swift3 = mkNixosConfigurations "AcerSwift3" "x86_64-linux";
+      nixvm = mkNixosConfigurations "NixVM" "x86_64-linux";  
     };
 
     homeConfigurations = {
-      os_default = mkHomeConfig "default" "x86_64-linux" true;
-      default = mkHomeConfig "default" "x86_64-linux" false;
-      os_minimal = mkHomeConfig "minimal" "x86_64-linux" true;
-      minimal = mkHomeConfig "minimal" "x86_64-linux" false;
+      os_default = mkHomeConfigurations "default" "x86_64-linux" true;
+      default = mkHomeConfigurations "default" "x86_64-linux" false;
+      os_minimal = mkHomeConfigurations "minimal" "x86_64-linux" true;
+      minimal = mkHomeConfigurations "minimal" "x86_64-linux" false;
     };
 
     # Development environments
