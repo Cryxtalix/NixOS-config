@@ -2,104 +2,73 @@
   description = "MyFlake";
 
   outputs = { self, nixpkgs, ... }@inputs:
-
     let
-      # System settings
       lib = nixpkgs.lib;
-      pkgs = import nixpkgs { inherit system; };
-      pkgs_unstable = import inputs.nixpkgs-unstable { inherit system; };
-      system = "x86_64-linux";
+      configDir = "~/NixOS-config"; # Path of this file
       timezone = "Asia/Singapore";
       locale = "en_SG.UTF-8";
-
-      # User settings
       username = "cryxtalix";
-      configDir = "~/NixOS-config"; # Path of this file
     in
-
   {
-    nixosConfigurations = {
-
-      swift3 = lib.nixosSystem {
-        inherit system;
-        modules = [
-          (./hosts/system/AcerSwift3/configuration.nix)
-          inputs.sops-nix.nixosModules.sops
-        ];
-        specialArgs = {
-          inherit timezone locale username;
-          hostname = "AcerSwift3";
+    nixosConfigurations = 
+      let
+        /**
+        * Function: Makes NixOS configs
+        * Arguments: 2
+        *
+        * hostname: Hostname of system and determines folder of config in ./hosts/system/.
+        * system(str) - Machine architecture. E.g. "x86_64-linux".
+        */
+        mkNixosConfig = hostname: system: lib.nixosSystem {
+          inherit system;
+          modules = [
+            (./hosts/system/${hostname}/configuration.nix)
+            inputs.sops-nix.nixosModules.sops
+          ];
+          specialArgs = {
+            inherit timezone locale username hostname;
+          };
         };
-      };
-
-      nixvm = lib.nixosSystem {
-        inherit system;
-        modules = [
-          (./hosts/system/NixVM/configuration.nix)
-          inputs.sops-nix.nixosModules.sops
-        ];
-        specialArgs = {
-          inherit timezone locale username;
-          hostname = "NixVM";
-        };
-      };
-      
+      in
+    {
+      swift3 = mkNixosConfig "AcerSwift3" "x86_64-linux";
+      nixvm = mkNixosConfig "NixVM" "x86_64-linux";  
     };
 
-    homeConfigurations = {
-
-      os-default = inputs.home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        modules = [
-          (./hosts/home/default/home.nix)
-        ];
-        extraSpecialArgs = {
-          inherit pkgs_unstable username configDir;
-          is_nixos = true;
+    homeConfigurations = 
+      let
+        /**
+        * Function: Makes standalone home-manager configs.
+        * Arguments: 3
+        *
+        * name(str) - Determines folder of config in ./hosts/home/. E.g. "default".
+        * system(str) - Machine architecture. E.g. "x86_64-linux".
+        * is_nixos(bool) - Whether home-manager is installed on nixos.
+        */
+        mkHomeConfig = name: system: is_nixos: inputs.home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.${system};
+          modules = [ 
+            ./hosts/home/${name}/home.nix 
+          ] ++ (if (!is_nixos) then [
+            inputs.sops-nix.homeManagerModules.sops
+          ] else []);
+          extraSpecialArgs = {
+            pkgs_unstable = inputs.nixpkgs-unstable.legacyPackages.${system};
+            inherit username configDir is_nixos;
+          };
         };
-      };
-
-      default = inputs.home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        modules = [
-          (./hosts/home/default/home.nix)
-          inputs.sops-nix.homeManagerModules.sops
-        ];
-        extraSpecialArgs = {
-          inherit pkgs_unstable username configDir;
-          is_nixos = false;
-        };
-      };
-
-      os-minimal = inputs.home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        modules = [
-          (./hosts/home/minimal/home.nix)
-        ];
-        extraSpecialArgs = {
-          inherit pkgs_unstable username configDir;
-          is_nixos = true;
-        };
-      };
-
-      minimal = inputs.home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        modules = [
-          (./hosts/home/minimal/home.nix)
-          inputs.sops-nix.homeManagerModules.sops
-        ];
-        extraSpecialArgs = {
-          inherit pkgs_unstable username configDir;
-          is_nixos = true;
-        };
-      };
-
+      in
+    {
+      os_default = mkHomeConfig "default" "x86_64-linux" true;
+      default = mkHomeConfig "default" "x86_64-linux" false;
+      os_minimal = mkHomeConfig "minimal" "x86_64-linux" true;
+      minimal = mkHomeConfig "minimal" "x86_64-linux" false;
     };
 
     # Development environments
-    c = import ./dev-envs/c.nix { inherit self pkgs; };
-    python = import ./dev-envs/python.nix { inherit self pkgs; };
-    esp = import ./dev-envs/esp.nix { inherit self pkgs; };
+    c = import ./dev-envs/c.nix {pkgs = nixpkgs.legacyPackages."x86_64-linux";};
+    python = import ./dev-envs/python.nix {pkgs = nixpkgs.legacyPackages."x86_64-linux";};
+    esp = import ./dev-envs/esp.nix {pkgs = nixpkgs.legacyPackages."x86_64-linux";};
   };
 
   inputs = {
