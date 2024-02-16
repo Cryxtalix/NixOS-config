@@ -57,18 +57,16 @@
       xivlauncher
     ] 
     ++ 
-    (
-      if is_nixos then with pkgs; [
-        # Only when NixOS
-        virtualbox
-      ]
-      else with pkgs; [
-        # Only when not NixOS
-        openssl
-        sops
-        wget
-      ]
-    );
+    (if is_nixos then with pkgs; [
+      # Only when NixOS
+      virtualbox
+    ]
+    else with pkgs; [
+      # Only when not NixOS
+      openssl
+      sops
+      wget
+    ]);
 
     file = {
       # dotfiles

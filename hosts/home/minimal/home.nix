@@ -20,15 +20,13 @@
       podman
     ]
     ++
-    (
-      if is_nixos then with pkgs; [
-        # Only when NixOS
-      ]
-      else with pkgs; [
-        # Only when not NixOS
-        sops
-      ]
-    );
+    (if is_nixos then with pkgs; [
+      # Only when NixOS
+    ]
+    else with pkgs; [
+      # Only when not NixOS
+      sops
+    ]);
 
     file = {
       # dotfiles

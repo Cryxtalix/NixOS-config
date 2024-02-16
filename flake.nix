@@ -51,11 +51,9 @@
             ./hosts/home/${name}/home.nix 
           ] 
           ++ 
-          (
-            if (!is_nixos) then [
-              inputs.sops-nix.homeManagerModules.sops
-            ] else []
-          );
+          (if (!is_nixos) then [
+            inputs.sops-nix.homeManagerModules.sops
+          ] else []);
           extraSpecialArgs = {
             pkgs_unstable = inputs.nixpkgs-unstable.legacyPackages.${system};
             inherit username configDir is_nixos;
