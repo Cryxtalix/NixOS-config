@@ -63,6 +63,7 @@
     ]
     else with pkgs; [
       # Only when not NixOS
+      gnupg
       openssl
       sops
       wget
