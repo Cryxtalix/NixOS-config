@@ -19,7 +19,8 @@
       lib = nixpkgs.lib;
       configDir = "~/NixOS-config"; # Path of this file
 
-      mkNixosConfigurations = hostname: system: lib.nixosSystem {
+      mkNixosConfigurations = { hostname, system }: 
+      lib.nixosSystem {
         inherit system;
         modules = [
           (./hosts/system/${hostname}/configuration.nix)
@@ -30,7 +31,8 @@
         };
       };
 
-      mkHomeConfigurations = name: system: is_nixos: inputs.home-manager.lib.homeManagerConfiguration {
+      mkHomeConfigurations = { name, system, is_nixos }: 
+      inputs.home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.${system};
         modules = [ 
           ./hosts/home/${name}/home.nix 
@@ -51,18 +53,18 @@
     in
   {
     nixosConfigurations = {
-      swift3 = mkNixosConfigurations "AcerSwift3" "x86_64-linux";
-      nixvm = mkNixosConfigurations "NixVM" "x86_64-linux";  
+      swift3 = mkNixosConfigurations {hostname = "AcerSwift3"; system = "x86_64-linux";};
+      nixvm = mkNixosConfigurations {hostname = "NixVM"; system = "x86_64-linux";};
     };
 
     homeConfigurations = {
-      os_default = mkHomeConfigurations "default" "x86_64-linux" true;
-      default = mkHomeConfigurations "default" "x86_64-linux" false;
-      os_minimal = mkHomeConfigurations "minimal" "x86_64-linux" true;
-      minimal = mkHomeConfigurations "minimal" "x86_64-linux" false;
+      os_default = mkHomeConfigurations {name = "default"; system = "x86_64-linux"; is_nixos = true;};
+      default = mkHomeConfigurations {name = "default"; system = "x86_64-linux"; is_nixos = false;};
+      os_minimal = mkHomeConfigurations {name = "minimal"; system = "x86_64-linux"; is_nixos = true;};
+      minimal = mkHomeConfigurations {name = "minimal"; system = "x86_64-linux"; is_nixos = false;};
     };
 
-    # Development environments
+    # Development shells
     c = import ./dev-envs/c.nix {pkgs = nixpkgs.legacyPackages."x86_64-linux";};
     python = import ./dev-envs/python.nix {pkgs = nixpkgs.legacyPackages."x86_64-linux";};
     esp = import ./dev-envs/esp.nix {pkgs = nixpkgs.legacyPackages."x86_64-linux";};
