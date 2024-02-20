@@ -60,12 +60,13 @@
     nixosConfigurations = {
       swift3 = mkNixosConfigurations {hostname = "AcerSwift3"; system = "x86_64-linux";};
       nixvm = mkNixosConfigurations {hostname = "NixVM"; system = "x86_64-linux";};
+      disko-test = mkNixosConfigurations {hostname = "Disko_test"; system = "x86_64-linux";};
     };
 
     homeConfigurations = {
-      os_default = mkHomeConfigurations {name = "default"; system = "x86_64-linux"; is_nixos = true;};
+      os-default = mkHomeConfigurations {name = "default"; system = "x86_64-linux"; is_nixos = true;};
       default = mkHomeConfigurations {name = "default"; system = "x86_64-linux"; is_nixos = false;};
-      os_minimal = mkHomeConfigurations {name = "minimal"; system = "x86_64-linux"; is_nixos = true;};
+      os-minimal = mkHomeConfigurations {name = "minimal"; system = "x86_64-linux"; is_nixos = true;};
       minimal = mkHomeConfigurations {name = "minimal"; system = "x86_64-linux"; is_nixos = false;};
     };
 
