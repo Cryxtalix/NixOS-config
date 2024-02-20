@@ -14,15 +14,9 @@
   #boot.loader.grub.device = "/dev/vda";
   #boot.loader.grub.useOSProber = true;
 
-  boot = {
-    loader = {
-      grub.enable = true;
-      efiSupport = true;
-      efiInstallAsRemoveable = true;
-    };
-    initrd.availableKernelModules = [ "ahci" "xhci_pci" "virtio_pci" "sr_mod" "virtio_blk" ];
-    boot.kernelModules = [ "kvm-intel" ];
-  };
+  boot.loader.grub.enable = true;
+  boot.loader.grub.efiSupport = true;
+  boot.loader.grub.efiInstallAsRemovable = true;
   # ---------------------------BOOTLOADER END---------------------------
 
   # ---------------------------SECRETS START---------------------------

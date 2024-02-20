@@ -70,6 +70,8 @@
       minimal = mkHomeConfigurations {name = "minimal"; system = "x86_64-linux"; is_nixos = false;};
     };
 
+    install = nixpkgs.legacyPackages."x86_64-linux".writeScriptBin ./scripts/install.sh;
+
     # Development shells
     c = import ./dev-envs/c.nix {pkgs = nixpkgs.legacyPackages."x86_64-linux";};
     python = import ./dev-envs/python.nix {pkgs = nixpkgs.legacyPackages."x86_64-linux";};
