@@ -12,6 +12,10 @@
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = { self, nixpkgs, ... }@inputs:
@@ -25,6 +29,7 @@
         modules = [
           (./hosts/system/${hostname}/configuration.nix)
           inputs.sops-nix.nixosModules.sops
+          inputs.disko.nixosModules.disko
         ];
         specialArgs = {
           inherit timezone locale username hostname;

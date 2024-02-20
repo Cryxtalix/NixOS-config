@@ -3,6 +3,7 @@
 {
   imports = [
     ./hardware-configuration.nix
+    ../../../modules/disko.nix
     ../../../modules
     
     # Select DE
