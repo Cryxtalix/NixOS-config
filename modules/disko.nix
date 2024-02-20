@@ -3,12 +3,12 @@
     disk = {
       vdb = {
         type = "disk";
-        device = "/dev/vdb";
+        device = "/dev/vda";
         content = {
           type = "gpt";
           partitions = {
             ESP = {
-              size = "512M";
+              size = "1G";
               type = "EF00";
               content = {
                 type = "filesystem";
@@ -30,7 +30,7 @@
                   allowDiscards = true;
                   #keyFile = "/tmp/secret.key";
                 };
-                additionalKeyFiles = [ "/tmp/additionalSecret.key" ];
+                #additionalKeyFiles = [ "/tmp/additionalSecret.key" ];
                 content = {
                   type = "btrfs";
                   extraArgs = [ "-f" ];

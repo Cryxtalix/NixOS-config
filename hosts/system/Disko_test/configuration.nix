@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ./hardware-configuration.nix
+    #./hardware-configuration.nix
     ../../../modules
     
     # Select DE
@@ -10,9 +10,19 @@
   ];
 
   # ---------------------------BOOTLOADER START---------------------------
-  boot.loader.grub.enable = true;
-  boot.loader.grub.device = "/dev/vda";
-  boot.loader.grub.useOSProber = true;
+  #boot.loader.grub.enable = true;
+  #boot.loader.grub.device = "/dev/vda";
+  #boot.loader.grub.useOSProber = true;
+
+  boot = {
+    loader = {
+      grub.enable = true;
+      efiSupport = true;
+      efiInstallAsRemoveable = true;
+    };
+    initrd.availableKernelModules = [ "ahci" "xhci_pci" "virtio_pci" "sr_mod" "virtio_blk" ];
+    boot.kernelModules = [ "kvm-intel" ];
+  };
   # ---------------------------BOOTLOADER END---------------------------
 
   # ---------------------------SECRETS START---------------------------
