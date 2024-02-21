@@ -12,10 +12,6 @@
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    disko = {
-      url = "github:nix-community/disko";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs = { self, nixpkgs, ... }@inputs:
@@ -60,7 +56,6 @@
     nixosConfigurations = {
       swift3 = mkNixosConfigurations {hostname = "AcerSwift3"; system = "x86_64-linux";};
       nixvm = mkNixosConfigurations {hostname = "NixVM"; system = "x86_64-linux";};
-      disko-test = mkNixosConfigurations {hostname = "Disko_test"; system = "x86_64-linux";};
     };
 
     homeConfigurations = {
@@ -69,8 +64,6 @@
       os-minimal = mkHomeConfigurations {name = "minimal"; system = "x86_64-linux"; is_nixos = true;};
       minimal = mkHomeConfigurations {name = "minimal"; system = "x86_64-linux"; is_nixos = false;};
     };
-
-    install = nixpkgs.legacyPackages."x86_64-linux".writeScriptBin "myscript" ./scripts/install.sh;
 
     # Development shells
     c = import ./dev-envs/c.nix {pkgs = nixpkgs.legacyPackages."x86_64-linux";};
