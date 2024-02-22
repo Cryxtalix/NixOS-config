@@ -4,7 +4,6 @@
   imports = [
     ./hardware-configuration.nix
     ../../../modules
-    ../../../modules/sops-nix.nix
 
     # Select DE
     ../../../modules/DE/gnome.nix
@@ -15,21 +14,6 @@
   boot.loader.grub.device = "/dev/vda";
   boot.loader.grub.useOSProber = true;
   # ---------------------------BOOTLOADER END---------------------------
-
-  # ---------------------------USERS START---------------------------
-  users.mutableUsers = false;
-  
-  users.users."${username}" = {
-    description = "Main user";
-    isNormalUser = true;
-    hashedPasswordFile = config.sops.secrets.cryxtalix_password.path;
-    extraGroups = [
-      "networkmanager"
-      "wheel"
-      "podman"
-    ];
-  };
-  # ---------------------------USERS END---------------------------
 
   # ---------------------------PACKAGES START---------------------------
   nixpkgs.config.allowUnfree = true;

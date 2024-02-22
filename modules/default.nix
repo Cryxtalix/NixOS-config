@@ -6,5 +6,6 @@
     ./nix-settings.nix
     ./sound.nix
     ./system.nix
+    ./users.nix
   ];
 }

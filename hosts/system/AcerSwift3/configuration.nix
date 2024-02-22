@@ -4,8 +4,7 @@
   imports = [
     ./hardware-configuration.nix
     ../../../modules
-    ../../../modules/sops-nix.nix
-    ../../../modules/nvidia_drivers.nix
+    ../../../modules/nvidia-drivers.nix
 
     # Select DE
     ../../../modules/DE/gnome.nix
@@ -16,22 +15,6 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.initrd.luks.devices."luks-9afc09d7-6a1a-45df-9caf-036b6503ab56".device = "/dev/disk/by-uuid/9afc09d7-6a1a-45df-9caf-036b6503ab56";
   # ---------------------------BOOTLOADER END---------------------------
-
-  # ---------------------------USERS START---------------------------
-  users.mutableUsers = false;
-  
-  users.users."${username}" = {
-    description = "Main user";
-    isNormalUser = true;
-    hashedPasswordFile = config.sops.secrets.cryxtalix_password.path;
-    extraGroups = [
-      "networkmanager"
-      "wheel"
-      "podman"
-      "vboxusers"
-    ];
-  };
-  # ---------------------------USERS END---------------------------
 
   # ---------------------------PACKAGES START---------------------------
   nixpkgs.config.allowUnfree = true;
