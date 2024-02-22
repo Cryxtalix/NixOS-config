@@ -25,6 +25,7 @@
     ]
     else with pkgs; [
       # Only when not NixOS
+      git-crypt
       sops
     ]);
 

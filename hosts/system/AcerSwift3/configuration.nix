@@ -54,6 +54,7 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     git
+    git-crypt
     home-manager
     openssl
     sops
