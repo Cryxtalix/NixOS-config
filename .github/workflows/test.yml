@@ -2,7 +2,9 @@ name: Run nix flake check
 
 on:
   push:
+    branches: [master, main]
   pull_request:
+    branches: [master, main]
 
 jobs:
   tests:
