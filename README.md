@@ -30,7 +30,7 @@ $ `nix-dev <choice_of_language>`
 ## For installing nix package manager on another distro:
 With Home Manager, we can configure almost any user apps and make any changes to files and folders in the home folder.
 1. Install nix with install script from https://zero-to-nix.com/start/install: 
-`curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install`.
+    `curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install`.
 2. Restart shell and add home-manager channel:
 `nix-channel --add https://github.com/nix-community/home-manager/archive/release-23.11.tar.gz home-manager`
 3. Update nix-channels: 
@@ -44,5 +44,7 @@ With Home Manager, we can configure almost any user apps and make any changes to
 7. Download this configuration: 
 `git clone https://github.com/Cryxtalix/NixOS-config && cd ~/NixOS-config`
 Or follow the link and download the files manually and unzip.
-8. Finally, install the configuration! 
+8. Change the configuration to your liking, such as changing settings in /packages/git.nix, editing installed apps in /hosts/home/profile, or even creating new profiles! Be sure to add any new profiles in flake.nix.
+9. `git add -A` if you used git clone earlier and created any new files.
+10. Finally, install the configuration! 
 `home-manager switch -b backup --flake .#<your-home-profile>`
