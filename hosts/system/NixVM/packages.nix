@@ -7,7 +7,6 @@
     git
     git-crypt
     home-manager
-    openssl
     sops
     wget
   ];
