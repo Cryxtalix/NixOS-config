@@ -57,7 +57,24 @@
       "inputs": {
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs",
-        "nixpkgs-unstable": "nixpkgs-unstable"
+        "nixpkgs-unstable": "nixpkgs-unstable",
+        "wallpaper": "wallpaper"
+      }
+    },
+    "wallpaper": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1708967745,
+        "narHash": "sha256-1Y3rDD5e409TNG23IahmxxVDlZl6Tr4cIJbKZiv2chE=",
+        "owner": "Cryxtalix",
+        "repo": "Wallpapers",
+        "rev": "85a06e754d5c126b00743c3ffdd932e1a36aef4f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Cryxtalix",
+        "repo": "Wallpapers",
+        "type": "github"
       }
     }
   },

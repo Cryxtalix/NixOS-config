@@ -8,6 +8,10 @@
       url = "github:nix-community/home-manager/release-23.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    wallpaper = {
+      url = "github:Cryxtalix/Wallpapers";
+      flake = false;
+    };
   };
 
   outputs = { self, nixpkgs, ... }@inputs:
@@ -34,10 +38,11 @@
         ];
         extraSpecialArgs = {
           pkgs_unstable = inputs.nixpkgs-unstable.legacyPackages.${system};
-          inherit username configDir is_nixos;
+          inherit username configDir is_nixos wallpaper;
         };
       };
 
+      wallpaper = inputs.wallpaper + "/carina.png";
       timezone = "Asia/Singapore";
       locale = "en_SG.UTF-8";
       username = "cryxtalix";

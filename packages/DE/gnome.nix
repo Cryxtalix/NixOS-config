@@ -1,4 +1,4 @@
-{ pkgs, configDir, ... }:
+{ pkgs, username, wallpaper, ... }:
 
 {
   dconf = {
@@ -27,8 +27,8 @@
         show-battery-percentage = true;
       };
       "org/gnome/desktop/background" = {
-        picture-uri = "${configDir}/wallpapers/tarantula.png";
-        picture-uri-dark = "${configDir}/wallpapers/tarantula.png";
+        picture-uri = "/home/${username}/.config/wallpaper.png";
+        picture-uri-dark = "/home/${username}/.config/wallpaper.png";
       };
       "org/gnome/desktop/wm/keybindings" = {
         cycle-windows = ["<Super>w"];
@@ -46,4 +46,8 @@
     caffeine
     gsconnect # Check https://userbase.kde.org/KDEConnect#Troubleshooting
   ];
+
+  home.file."./.config/wallpaper.png" = {
+    source = "${wallpaper}";
+  };
 }
