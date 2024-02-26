@@ -11,16 +11,14 @@
       nv-gpu = "watch -n1 nvidia-smi";
     } 
     // 
-    (
-      if is_nixos then {
-        # Only when NixOS
-        nix-cg = "sudo nix-collect-garbage --delete-older-than 7d";
-      } 
-      else {
-        # Only when not NixOS
-        nix-cg = "nix-collect-garbage --delete-older-than 7d";
-      }
-    );
+    (if is_nixos then {
+      # Only when NixOS
+      nix-cg = "sudo nix-collect-garbage --delete-older-than 7d";
+    } 
+    else {
+      # Only when not NixOS
+      nix-cg = "nix-collect-garbage --delete-older-than 7d";
+    });
 
     sessionVariables = {
 
@@ -36,25 +34,20 @@
       }
     ''
     +
-    (
-      if is_nixos then 
-      # Only when NixOS
-      ''
-        nix-system-up() {
-          sudo nixos-rebuild switch --flake ${configDir}/.#"$1"
-        }
-        nix-full-up() {
-          nix-flake-up && nix-system-up "$1" && nix-home-up "$2"
-        }
-      '' 
-      else 
-      # Only when not NixOS
-      ''
-        nix-full-up() {
-          nix-flake-up && nix-home-up "$1"
-        }
-      ''
-    );
+    # Only when NixOS
+    (if is_nixos then ''
+      nix-system-up() {
+        sudo nixos-rebuild switch --flake ${configDir}/.#"$1"
+      }
+      nix-full-up() {
+        nix-flake-up && nix-system-up "$1" && nix-home-up "$2"
+      }
+    '' 
+    # Only when not NixOS
+    else ''
+      nix-full-up() {
+        nix-flake-up && nix-home-up "$1"
+      }
+    '');
   };
 }
-
