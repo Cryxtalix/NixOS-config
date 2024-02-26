@@ -13,7 +13,7 @@
   outputs = { self, nixpkgs, ... }@inputs:
     let
       lib = nixpkgs.lib;
-      configDir = "~/NixOS-config"; # Path of this file
+      configDir = "/home/${username}/NixOS-config"; # Path of this file
 
       mkNixosConfigurations = { hostname, system }: 
       lib.nixosSystem {

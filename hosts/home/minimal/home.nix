@@ -3,6 +3,9 @@
 {
   imports = [
     ../../../packages
+
+    # Select DE configs
+    ../../../packages/DE/gnome.nix
   ];
 
   nixpkgs.config.allowUnfree = true;

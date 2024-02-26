@@ -6,6 +6,7 @@
     
     shellAliases = {
       ll = "ls -al";
+      c = "clear";
       nix-flake-up = "(cd ${configDir} && nix flake update)";
       nv-gpu = "watch -n1 nvidia-smi";
     } 

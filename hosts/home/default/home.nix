@@ -3,6 +3,9 @@
 {
   imports = [
     ../../../packages
+
+    # Select DE configs
+    ../../../packages/DE/gnome.nix
   ];
 
   nixpkgs.config.allowUnfree = true;
@@ -17,6 +20,7 @@
     packages = with pkgs; [
       arduino
       chromium
+      dconf
       ddrescue
       discord
       distrobox
@@ -27,11 +31,6 @@
       gittyup
       gnome.gnome-boxes
       gnome.gnome-tweaks
-      gnome-extension-manager
-      gnomeExtensions.alphabetical-app-grid
-      gnomeExtensions.blur-my-shell
-      gnomeExtensions.caffeine
-      gnomeExtensions.gsconnect # Check https://userbase.kde.org/KDEConnect#Troubleshooting
       htop
       libreoffice
       libvirt
