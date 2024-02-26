@@ -1,4 +1,4 @@
-{ pkgs, username, wallpaper, ... }:
+{ pkgs, homeDir, wallpaper, ... }:
 
 {
   dconf = {
@@ -27,8 +27,8 @@
         show-battery-percentage = true;
       };
       "org/gnome/desktop/background" = {
-        picture-uri = "/home/${username}/.config/wallpaper.png";
-        picture-uri-dark = "/home/${username}/.config/wallpaper.png";
+        picture-uri = "${homeDir}/.config/wallpaper.png";
+        picture-uri-dark = "${homeDir}/.config/wallpaper.png";
       };
       "org/gnome/desktop/wm/keybindings" = {
         cycle-windows = ["<Super>w"];

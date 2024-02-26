@@ -1,4 +1,4 @@
-{ pkgs, pkgs_unstable, username, is_nixos, ... }:
+{ pkgs, pkgs_unstable, username, homeDir, is_nixos, ... }:
 
 {
   imports = [
@@ -14,7 +14,7 @@
 
   home = {
     username = username;
-    homeDirectory = "/home/${username}";
+    homeDirectory = homeDir;
     stateVersion = "23.11"; # Do not change
 
     packages = with pkgs; [

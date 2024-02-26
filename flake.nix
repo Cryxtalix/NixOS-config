@@ -17,7 +17,8 @@
   outputs = { self, nixpkgs, ... }@inputs:
     let
       lib = nixpkgs.lib;
-      configDir = "/home/${username}/NixOS-config"; # Path of this file
+      homeDir = "/home/${username}";
+      configDir = "${homeDir}/NixOS-config";
 
       mkNixosConfigurations = { hostname, system }: 
       lib.nixosSystem {
@@ -38,7 +39,7 @@
         ];
         extraSpecialArgs = {
           pkgs_unstable = inputs.nixpkgs-unstable.legacyPackages.${system};
-          inherit username configDir is_nixos wallpaper;
+          inherit username homeDir configDir is_nixos wallpaper;
         };
       };
 
