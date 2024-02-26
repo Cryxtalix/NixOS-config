@@ -8,10 +8,6 @@
       url = "github:nix-community/home-manager/release-23.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    sops-nix = {
-      url = "github:Mic92/sops-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs = { self, nixpkgs, ... }@inputs:
@@ -24,7 +20,6 @@
         inherit system;
         modules = [
           (./hosts/system/${hostname}/configuration.nix)
-          inputs.sops-nix.nixosModules.sops
         ];
         specialArgs = {
           inherit timezone locale username hostname;
@@ -36,11 +31,7 @@
         pkgs = nixpkgs.legacyPackages.${system};
         modules = [ 
           ./hosts/home/${name}/home.nix 
-        ] 
-        ++ 
-        (if (!is_nixos) then [
-          inputs.sops-nix.homeManagerModules.sops
-        ] else []);
+        ];
         extraSpecialArgs = {
           pkgs_unstable = inputs.nixpkgs-unstable.legacyPackages.${system};
           inherit username configDir is_nixos;
