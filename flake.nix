@@ -19,7 +19,7 @@
       lib.nixosSystem {
         inherit system;
         modules = [
-          (./hosts/system/${hostname}/configuration.nix)
+          (./hosts/system/${hostname})
         ];
         specialArgs = {
           inherit timezone locale username hostname;

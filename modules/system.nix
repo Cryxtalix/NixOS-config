@@ -20,13 +20,16 @@
   services = {
     printing.enable = false;
     xserver = {
-      enable = true; # Enable the X11 windowing system.
-      layout = "us"; # Keyboard
+      enable = true;
+      # Keyboard
+      layout = "us";
       xkbVariant = "";
-      # Enable touchpad support (enabled default in most desktopManager).
-      #libinput.enable = true;
+      # Touchpad
+      libinput.enable = true;
 
       excludePackages = [ pkgs.xterm ];
     };
   };
+
+  system.stateVersion = "23.11"; # Do not change
 }

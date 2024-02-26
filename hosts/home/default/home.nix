@@ -1,4 +1,4 @@
-{ config, lib, pkgs, pkgs_unstable, username, is_nixos, configDir, ... }:
+{ pkgs, pkgs_unstable, username, is_nixos, ... }:
 
 {
   imports = [
