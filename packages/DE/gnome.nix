@@ -21,12 +21,21 @@
         ];
       };
       "org/gnome/desktop/interface" = {
+        clock-show-weekday = true;
         color-scheme = "prefer-dark";
         enable-hot-corners = false;
+        show-battery-percentage = true;
       };
       "org/gnome/desktop/background" = {
         picture-uri = "${configDir}/wallpapers/tarantula.png";
         picture-uri-dark = "${configDir}/wallpapers/tarantula.png";
+      };
+      "org/gnome/desktop/wm/keybindings" = {
+        cycle-windows = ["<Super>w"];
+        move-to-monitor-left = ["<Shift><Super>1"];
+        move-to-monitor-right = ["<Shift><Super>2"];
+        switch-to-workspace-left = ["<Super>1"];
+        switch-to-workspace-right = ["<Super>2"];
       };
     };
   };
