@@ -1,4 +1,4 @@
-{ config, lib, pkgs, is_nixos, configDir, ... }:
+{ is_nixos, configDir, ... }:
 
 {
   programs.bash = {

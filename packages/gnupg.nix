@@ -1,4 +1,4 @@
-{ config, pkgs, is_nixos, ... }:
+{ is_nixos, ... }:
 
 {
   /* services.pcscd.enable = true;

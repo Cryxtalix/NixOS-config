@@ -69,45 +69,12 @@
         "type": "github"
       }
     },
-    "nixpkgs_2": {
-      "locked": {
-        "lastModified": 1708475490,
-        "narHash": "sha256-g1v0TsWBQPX97ziznfJdWhgMyMGtoBFs102xSYO4syU=",
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "0e74ca98a74bc7270d28838369593635a5db3260",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nixos",
-        "ref": "nixos-unstable",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "old-python-nixpkgs": {
-      "locked": {
-        "lastModified": 1597422214,
-        "narHash": "sha256-elQsY9eR1UAHxy46vm7ZpZMTGxmknae5c/UZOFZU0ck=",
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "96745f0228359a71051a1d0bda4080e7ec134ade",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "96745f0228359a71051a1d0bda4080e7ec134ade",
-        "type": "github"
-      }
-    },
     "root": {
       "inputs": {
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs",
         "nixpkgs-unstable": "nixpkgs-unstable",
-        "sops-nix": "sops-nix",
-        "test-flake": "test-flake"
+        "sops-nix": "sops-nix"
       }
     },
     "sops-nix": {
@@ -129,22 +96,6 @@
         "owner": "Mic92",
         "repo": "sops-nix",
         "type": "github"
-      }
-    },
-    "test-flake": {
-      "inputs": {
-        "nixpkgs": "nixpkgs_2",
-        "old-python-nixpkgs": "old-python-nixpkgs"
-      },
-      "locked": {
-        "lastModified": 1,
-        "narHash": "sha256-y3aV69UfSEPklWrzBDcrwwS+9Lb/xCXSA1dGoBZKcqU=",
-        "path": "/nix/store/4ahardlc861sywikb1q2l2bvbm5xqxpw-source/dev-envs/test",
-        "type": "path"
-      },
-      "original": {
-        "path": "/nix/store/4ahardlc861sywikb1q2l2bvbm5xqxpw-source/dev-envs/test",
-        "type": "path"
       }
     }
   },

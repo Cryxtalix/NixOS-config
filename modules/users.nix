@@ -1,4 +1,4 @@
-{ config, pkgs, username, gcrypt_secrets, ... }:
+{ ... }:
 
 {
   users.mutableUsers = false;

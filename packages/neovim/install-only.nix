@@ -2,7 +2,7 @@
 Install neovim, but without configuration.
 */
 
-{ config, pkgs, pkgs_unstable, ... }:
+{ pkgs, pkgs_unstable, ... }:
 
 {
   programs.neovim = {
