@@ -21,7 +21,7 @@ Install neovim and import configuration from github repo
   };
 
   home.file = {
-    "./.config/nvim/" = {
+    ".config/nvim/" = {
       source = "${neovim}";
       recursive = true;
     };

@@ -47,7 +47,5 @@
     gsconnect # Check https://userbase.kde.org/KDEConnect#Troubleshooting
   ];
 
-  home.file."./.config/wallpaper.png" = {
-    source = "${wallpaper}";
-  };
+  home.file.".config/wallpaper.png".source = "${wallpaper}";
 }

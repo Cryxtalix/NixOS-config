@@ -20,17 +20,17 @@
 
 
   home.file = if (!is_nixos) then {
-    "./.gnupg/gpg.conf".text = ''
+    ".gnupg/gpg.conf".text = ''
       use-agent 
       pinentry-mode loopback
     '';
 
     # 86400 = 1 day
     # 604800 = 1 week
-    "./.gnupg/gpg-agent.conf".text = ''
+    ".gnupg/gpg-agent.conf".text = ''
       allow-loopback-pinentry
 
-      #Passphrase Cache (seconds)
+      # Passphrase Cache (seconds)
       
       default-cache-ttl 86400
       max-cache-ttl 86400

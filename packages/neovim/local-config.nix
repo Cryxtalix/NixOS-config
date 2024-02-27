@@ -15,7 +15,7 @@ folder will be recursively copied to the ~/.config/nvim.
   };
 
   home.file = {
-    "./.config/nvim/" = {
+    ".config/nvim/" = {
       source = ./nvim;
       recursive = true;
     };
