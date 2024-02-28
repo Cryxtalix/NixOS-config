@@ -72,7 +72,7 @@
     };
 
     sessionVariables = {
-      EDITOR = "neovim";
+      #EDITOR = "neovim";
     };
   };
 }
