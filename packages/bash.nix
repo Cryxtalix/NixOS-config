@@ -7,6 +7,7 @@
     shellAliases = {
       ll = "ls -al";
       c = "clear";
+      neovim = "nvim";
       nix-flake-up = "(cd ${configDir} && nix flake update)";
       nv-gpu = "watch -n1 nvidia-smi";
     } 
