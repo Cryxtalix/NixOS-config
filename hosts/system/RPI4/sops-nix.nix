@@ -6,4 +6,10 @@
     defaultSopsFile = ../../../secrets/secrets.yaml;
     defaultSopsFormat = "yaml";
   };
+
+  secrets = {
+    cryxtalix_password = {
+      neededForUsers = true;
+    };
+  };
 }

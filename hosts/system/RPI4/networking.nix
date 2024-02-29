@@ -2,7 +2,7 @@
 
 {
   sops.secrets."wireless.env" = { };
-  
+
   networking = {
     hostName = hostname;
     wireless = {
@@ -15,6 +15,5 @@
         "@hotspot_ssid@".psk = "@hotspot_psk@";
       };
     };
-    #networkmanager.enable = true;
   };
 }
