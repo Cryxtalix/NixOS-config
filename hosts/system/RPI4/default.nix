@@ -2,7 +2,7 @@
   imports = [
     ./hardware-configuration.nix
     ../../../modules/users.nix
-    ../../../modules/sops-nix
+    ../../../modules/sops-nix.nix
     ./packages.nix
     ./networking.nix
     #./sops-nix.nix
