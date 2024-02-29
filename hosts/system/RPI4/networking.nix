@@ -1,15 +1,20 @@
 { hostname, config, ... }:
-let
-  SSID = config.sops.secrets."home_wifi/ssid".path;
-  SSIDpassword = config.sops.secrets."home_wifi/password".path;
-in
+
 {
+  sops.secrets."wireless.env" = { };
+  
   networking = {
     hostName = hostname;
     wireless = {
       enable = true;
-      networks."${SSID}".psk = SSIDpassword;
+      enableIPv6 = true;
       interfaces = [ "wlan0" ];
+      environmentFile = config.sops.secrets."wireless.env".path;
+      networks = {
+        "@home_ssid@".psk = "@home_psk@";
+        "@hotspot_ssid@".psk = "@hotspot_psk@";
+      };
     };
+    #networkmanager.enable = true;
   };
 }
