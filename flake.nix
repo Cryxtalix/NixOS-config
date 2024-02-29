@@ -8,6 +8,12 @@
       url = "github:nix-community/home-manager/release-23.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     wallpaper = {
       url = "github:Cryxtalix/Wallpapers";
       flake = false;
@@ -25,9 +31,10 @@
         inherit system;
         modules = [
           (./hosts/system/${hostname})
+          inputs.sops-nix.nixosModules.sops
         ];
         specialArgs = {
-          inherit timezone locale username hostname;
+          inherit timezone locale homeDir hostname;
         };
       };
 
@@ -52,6 +59,7 @@
     nixosConfigurations = {
       swift3 = mkNixosConfigurations {hostname = "AcerSwift3"; system = "x86_64-linux";};
       nixvm = mkNixosConfigurations {hostname = "NixVM"; system = "x86_64-linux";};
+      rpi4 = mkNixosConfigurations {hostname = "RPI4"; system = "aarch64-linux";};
     };
 
     homeConfigurations = {
