@@ -1,5 +1,6 @@
 {
   imports = [
+    ./firewall.nix
     ./networking.nix
     ./nix-ld.nix
     ./nix-settings.nix

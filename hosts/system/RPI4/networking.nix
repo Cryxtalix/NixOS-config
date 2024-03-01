@@ -1,4 +1,4 @@
-{ hostname, config, ... }:
+{ config, hostname, ... }:
 
 {
   sops.secrets."wireless.env" = { };
