@@ -49,3 +49,7 @@
 
   home.file.".config/wallpaper.png".source = "${wallpaper}";
 }
+
+# Guide:
+# https://hoverbear.org/blog/declarative-gnome-configuration-in-nixos/
+# https://determinate.systems/posts/declarative-gnome-configuration-with-nixos/

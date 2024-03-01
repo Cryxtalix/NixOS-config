@@ -24,8 +24,12 @@
       # Keyboard
       layout = "us";
       xkbVariant = "";
-      # Touchpad
-      libinput.enable = true;
+      # Mouse and touchpad
+      # Let DE auto configure
+      /* libinput = {
+        enable = true;
+        touchpad.tapping = true;
+      }; */
 
       excludePackages = [ pkgs.xterm ];
     };
