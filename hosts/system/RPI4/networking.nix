@@ -9,6 +9,7 @@
     wireless = {
       enable = true;
       interfaces = [ "wlan0" ];
+      scanOnLowSignal = true;
       environmentFile = config.sops.secrets."wireless.env".path;
       networks = {
         "@home_ssid@" = {
