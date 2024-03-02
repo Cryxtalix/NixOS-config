@@ -17,11 +17,11 @@
         enableIPv6 = true;
       }
 
-      (lib.mkIf (config.networking.use_nm) {
+      (lib.mkIf (config.networking.use_networkmanager) {
         networkmanager.enable = true;
       })
 
-      (lib.mkIf (!config.networking.use_nm) {
+      (lib.mkIf (!config.networking.use_networkmanager) {
         wireless = {
           enable = true;
           interfaces = [ "wlan0" ];
