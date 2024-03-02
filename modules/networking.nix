@@ -1,13 +1,44 @@
-{ hostname, ... }:
+{ config, lib, hostname, ... }:
 
 {
-  networking = {
-    hostName = hostname;
-    networkmanager.enable = true;
-    enableIPv6 = true;
-    # wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-    # Configure network proxy if necessary
-    # proxy.default = "http://user:password@proxy:port/";
-    # proxy.noProxy = "127.0.0.1,localhost,internal.domain";
+  options = {
+    networking.use_networkmanager = lib.mkOption {
+      type = lib.types.bool;
+      default = true;
+    };
+  };
+
+  config = {
+    sops.secrets."wireless.env" = { };
+
+    networking = lib.mkMerge [
+      {
+        hostName = hostname;
+        enableIPv6 = true;
+      }
+
+      (lib.mkIf (config.networking.use_nm) {
+        networkmanager.enable = true;
+      })
+
+      (lib.mkIf (!config.networking.use_nm) {
+        wireless = {
+          enable = true;
+          interfaces = [ "wlan0" ];
+          scanOnLowSignal = true;
+          environmentFile = config.sops.secrets."wireless.env".path;
+          networks = {
+            "@home_ssid@" = {
+              psk = "@home_psk@";
+              priority = 10;
+            };
+            "@hotspot_ssid@" = {
+              psk = "@hotspot_psk@";
+              priority = 0;
+            };
+          };
+        };
+      })
+    ];
   };
 }
