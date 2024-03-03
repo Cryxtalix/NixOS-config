@@ -1,4 +1,4 @@
-{ pkgs, timezone, locale, ... }:
+{ config, lib, pkgs, timezone, locale, ... }:
 
 {
   time.timeZone = timezone;

@@ -1,4 +1,4 @@
-{ homeDir, ... }:
+{ config, lib, pkgs, homeDir, ... }:
 
 {
   sops = {

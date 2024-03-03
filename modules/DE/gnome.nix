@@ -1,4 +1,4 @@
-{ pkgs, configDir, ... }:
+{ config, lib, pkgs, configDir, ... }:
 
 {
   # Enable the GNOME Desktop Environment.
