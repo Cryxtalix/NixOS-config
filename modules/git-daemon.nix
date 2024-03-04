@@ -5,21 +5,23 @@
   services = {
     gitDaemon = {
       enable = true;
+      user = "git";
+      group = "git";
       basePath = "/srv/git/";
       exportAll = true;
-      port = 22;
+      port = 9418;
     };
-    #openssh.passwordAuthentication = false;
+    openssh.settings.PasswordAuthentication = false;
     sshguard.enable = true;
   };
 
   users.users.git = {
     isSystemUser = true;
     home = "/srv/git";
+    createHome = true;
     shell = "${pkgs.git}/bin/git-shell";
-    # Defining authorized keys here will disable ssh-copy-id
-    /* openssh.authorizedKeys.keys = [
-      #"ssh-ed 25519 ...."
-    ]; */
+    openssh.authorizedKeys.keyFiles = [
+      ../keys/home-git.pub
+    ];
   };
 }
