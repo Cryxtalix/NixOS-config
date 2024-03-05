@@ -30,7 +30,7 @@
       lib.nixosSystem {
         inherit system;
         modules = [
-          (./hosts/system/${hostname})
+          ./hosts/system/${hostname}
           inputs.sops-nix.nixosModules.sops
         ];
         specialArgs = {
@@ -38,11 +38,11 @@
         };
       };
 
-      mkHomeConfigurations = { name, system, is_nixos }: 
+      mkHomeConfigurations = { profile, system, is_nixos }: 
       inputs.home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.${system};
         modules = [ 
-          ./hosts/home/${name}/home.nix 
+          ./hosts/home/${profile}
         ];
         extraSpecialArgs = {
           pkgs_unstable = inputs.nixpkgs-unstable.legacyPackages.${system};
@@ -63,10 +63,10 @@
     };
 
     homeConfigurations = {
-      os-default = mkHomeConfigurations {name = "default"; system = "x86_64-linux"; is_nixos = true;};
-      default = mkHomeConfigurations {name = "default"; system = "x86_64-linux"; is_nixos = false;};
-      os-minimal = mkHomeConfigurations {name = "minimal"; system = "x86_64-linux"; is_nixos = true;};
-      minimal = mkHomeConfigurations {name = "minimal"; system = "x86_64-linux"; is_nixos = false;};
+      os-default = mkHomeConfigurations {profile = "default"; system = "x86_64-linux"; is_nixos = true;};
+      default = mkHomeConfigurations {profile = "default"; system = "x86_64-linux"; is_nixos = false;};
+      os-minimal = mkHomeConfigurations {profile = "minimal"; system = "x86_64-linux"; is_nixos = true;};
+      minimal = mkHomeConfigurations {profile = "minimal"; system = "x86_64-linux"; is_nixos = false;};
     };
 
     # Development shells
