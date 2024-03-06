@@ -7,6 +7,5 @@
     ./sops-nix.nix
     ./sound.nix
     ./system.nix
-    ./users.nix
   ];
 }

@@ -31,6 +31,7 @@
         inherit system;
         modules = [
           ./hosts/system/${hostname}
+          ./user/${user_profile}/users.nix
           inputs.sops-nix.nixosModules.sops
         ];
         specialArgs = {
