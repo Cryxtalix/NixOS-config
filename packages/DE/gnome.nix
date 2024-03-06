@@ -1,4 +1,4 @@
-{ pkgs, homeDir, wallpaper, ... }:
+{ pkgs, user, wallpaper_source, ... }:
 
 {
   dconf = {
@@ -27,8 +27,8 @@
         show-battery-percentage = true;
       };
       "org/gnome/desktop/background" = {
-        picture-uri = "${homeDir}/.config/wallpaper.png";
-        picture-uri-dark = "${homeDir}/.config/wallpaper.png";
+        picture-uri = "${user.homeDir}/.config/wallpaper.png";
+        picture-uri-dark = "${user.homeDir}/.config/wallpaper.png";
       };
       "org/gnome/desktop/wm/keybindings" = {
         cycle-windows = ["<Super>w"];
@@ -47,7 +47,7 @@
     gsconnect # Check https://userbase.kde.org/KDEConnect#Troubleshooting
   ];
 
-  home.file.".config/wallpaper.png".source = "${wallpaper}";
+  home.file.".config/wallpaper.png".source = "${wallpaper_source} + ${user.wallpaper}";
 }
 
 # Guide:

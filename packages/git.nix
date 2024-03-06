@@ -1,10 +1,10 @@
-{ ... }:
+{ user, ... }:
 
 {
   programs.git = {
     enable = true;
-    userName = "Cryxtalix";
-    userEmail = "fgx8p9t@protonmail.com";
+    userName = user.git.username;
+    userEmail = user.git.email;
     signing = {
       key = null;
       signByDefault = true;

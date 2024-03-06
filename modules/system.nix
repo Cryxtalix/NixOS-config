@@ -1,20 +1,20 @@
-{ config, lib, pkgs, timezone, locale, ... }:
+{ config, lib, pkgs, user, ... }:
 
 {
-  time.timeZone = timezone;
+  time.timeZone = user.timezone;
 
-  i18n.defaultLocale = locale;
+  i18n.defaultLocale = user.locale;
 
   i18n.extraLocaleSettings = {
-    LC_ADDRESS = locale;
-    LC_IDENTIFICATION = locale;
-    LC_MEASUREMENT = locale;
-    LC_MONETARY = locale;
-    LC_NAME = locale;
-    LC_NUMERIC = locale;
-    LC_PAPER = locale;
-    LC_TELEPHONE = locale;
-    LC_TIME = locale;
+    LC_ADDRESS = user.locale;
+    LC_IDENTIFICATION = user.locale;
+    LC_MEASUREMENT = user.locale;
+    LC_MONETARY = user.locale;
+    LC_NAME = user.locale;
+    LC_NUMERIC = user.locale;
+    LC_PAPER = user.locale;
+    LC_TELEPHONE = user.locale;
+    LC_TIME = user.locale;
   };
 
   services = {

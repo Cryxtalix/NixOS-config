@@ -1,4 +1,4 @@
-{ pkgs, pkgs_unstable, username, homeDir, is_nixos, ... }:
+{ pkgs, pkgs_unstable, user, is_nixos, ... }:
 
 {
   imports = [
@@ -13,8 +13,8 @@
   targets.genericLinux.enable = if is_nixos then false else true;
 
   home = {
-    username = username;
-    homeDirectory = homeDir;
+    username = user.username;
+    homeDirectory = user.homeDir;
     stateVersion = "23.11"; # Do not change
 
     packages = with pkgs; [

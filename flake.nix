@@ -26,7 +26,7 @@
       homeDir = "/home/${username}";
       configDir = "${homeDir}/NixOS-config";
 
-      mkNixosConfigurations = { hostname, system }: 
+      mkNixosConfigurations = { hostname, system, user_profile ? "main" }: 
       lib.nixosSystem {
         inherit system;
         modules = [
@@ -34,11 +34,12 @@
           inputs.sops-nix.nixosModules.sops
         ];
         specialArgs = {
-          inherit timezone locale homeDir hostname;
+          user = import ./user/${user_profile};
+          inherit hostname;
         };
       };
 
-      mkHomeConfigurations = { profile, system, is_nixos }: 
+      mkHomeConfigurations = { profile, system, is_nixos, user_profile ? "main" }: 
       inputs.home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.${system};
         modules = [ 
@@ -46,11 +47,12 @@
         ];
         extraSpecialArgs = {
           pkgs_unstable = inputs.nixpkgs-unstable.legacyPackages.${system};
-          inherit username homeDir configDir is_nixos wallpaper;
+          user = import ./user/${user_profile};
+          inherit is_nixos wallpaper_source;
         };
       };
 
-      wallpaper = inputs.wallpaper + "/carina.png";
+      wallpaper_source = inputs.wallpaper;
       timezone = "Asia/Singapore";
       locale = "en_SG.UTF-8";
       username = "cryxtalix";
