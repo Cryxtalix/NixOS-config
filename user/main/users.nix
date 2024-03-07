@@ -17,6 +17,7 @@
           "wheel"
           "podman"
           "vboxusers"
+          "dialout"
         ];
       };
     };
