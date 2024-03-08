@@ -1,8 +1,8 @@
 { config, lib, pkgs, hostname, ... }:
 
 {
-  options = {
-    networking.use_networkmanager = lib.mkOption {
+  options.custom = {
+    use_networkmanager = lib.mkOption {
       type = lib.types.bool;
       default = true;
     };
@@ -17,11 +17,11 @@
         enableIPv6 = true;
       }
 
-      (lib.mkIf (config.networking.use_networkmanager) {
+      (lib.mkIf (config.custom.use_networkmanager) {
         networkmanager.enable = true;
       })
 
-      (lib.mkIf (!config.networking.use_networkmanager) {
+      (lib.mkIf (!config.custom.use_networkmanager) {
         wireless = {
           enable = true;
           interfaces = [ "wlan0" ];

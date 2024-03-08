@@ -2,13 +2,20 @@
   imports = [
     ./hardware-configuration.nix
     ./packages.nix
-    ../../../modules/sops-nix.nix
-    ../../../modules/networking.nix
-    ../../../modules/git-daemon.nix
-    ../../../modules/nix-settings.nix
+    ../../../modules
+    
+    # Select DE
   ];
 
-  networking.use_networkmanager = false;
+  custom = {
+    firewall.enable = true;
+    git-daemon.enable = true;
+    use_networkmanager = false;
+    nix-ld.enable = false;
+    nvidia_gpu.enable = false;
+    sops-nix.enable = true;
+    sound.enable = false;
+  };
 
   system.stateVersion = "23.11"; # Do not change
 }
