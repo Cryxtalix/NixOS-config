@@ -22,10 +22,8 @@
 
   outputs = { self, nixpkgs, ... }@inputs:
     let
-      lib = nixpkgs.lib;
-
       mkNixosConfigurations = { hostname, system, user_profile ? "main" }: 
-      lib.nixosSystem {
+      nixpkgs.lib.nixosSystem {
         inherit system;
         modules = [
           ./hosts/system/${hostname}
@@ -39,7 +37,7 @@
       };
 
       mkHomeConfigurations = { profile, system, is_nixos, user_profile ? "main" }: 
-      inputs.home-manager.lib.homeManagerConfiguration {
+      inputs.home-manager.nixpkgs.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.${system};
         modules = [ 
           ./hosts/home/${profile}
