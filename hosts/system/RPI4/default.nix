@@ -5,7 +5,10 @@
     ../../../modules/sops-nix.nix
     ../../../modules/networking.nix
     ../../../modules/git-daemon.nix
+    ../../../modules/nix-settings.nix
   ];
 
   networking.use_networkmanager = false;
+
+  system.stateVersion = "23.11"; # Do not change
 }

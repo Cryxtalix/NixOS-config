@@ -32,7 +32,7 @@
         ];
         specialArgs = {
           user = import ./user/${user_profile};
-          inherit hostname;
+          inherit hostname user_profile;
         };
       };
 

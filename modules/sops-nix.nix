@@ -1,9 +1,9 @@
-{ config, lib, pkgs, user, ... }:
+{ config, lib, pkgs, user, user_profile, ... }:
 
 {
   sops = {
     age.keyFile = "${user.homeDir}/.config/sops/age/keys.txt";
-    defaultSopsFile = ../secrets/secrets.yaml;
+    defaultSopsFile = ../user/${user_profile}/secrets.yaml;
     defaultSopsFormat = "yaml";
   };
 }
