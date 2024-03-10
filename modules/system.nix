@@ -34,4 +34,13 @@
       excludePackages = [ pkgs.xterm ];
     };
   };
+
+  users = {
+    mutableUsers = false;
+    extraGroups = {
+      vboxusers.members = [ "user-with-access-to-virtualbox" ];
+    };
+  };
+
+  system.stateVersion = "23.11"; # Do not change
 }

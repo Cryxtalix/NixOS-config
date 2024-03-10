@@ -8,5 +8,4 @@
   ];
 
   networking.use_networkmanager = false;
-  system.stateVersion = "23.11"; # Do not change
 }
