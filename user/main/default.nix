@@ -1,13 +1,9 @@
-let
+rec {
   username = "cryxtalix";
-  filename = "NixOS-config";
-in
-{
-  username = username;
   timezone = "Asia/Singapore";
   locale = "en_SG.UTF-8";
   homeDir = "/home/${username}";
-  configDir = "/home/${username}/${filename}";
+  configDir = "/home/${username}/NixOS-config";
   wallpaper = "tarantula.png";
   git = {
     username = "Cryxtalix";

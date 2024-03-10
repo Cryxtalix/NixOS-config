@@ -23,8 +23,6 @@
   outputs = { self, nixpkgs, ... }@inputs:
     let
       lib = nixpkgs.lib;
-      homeDir = "/home/${username}";
-      configDir = "${homeDir}/NixOS-config";
 
       mkNixosConfigurations = { hostname, system, user_profile ? "main" }: 
       lib.nixosSystem {
@@ -49,14 +47,10 @@
         extraSpecialArgs = {
           pkgs_unstable = inputs.nixpkgs-unstable.legacyPackages.${system};
           user = import ./user/${user_profile};
-          inherit is_nixos wallpaper_source;
+          wallpaper_source = inputs.wallpaper;
+          inherit is_nixos;
         };
       };
-
-      wallpaper_source = inputs.wallpaper;
-      timezone = "Asia/Singapore";
-      locale = "en_SG.UTF-8";
-      username = "cryxtalix";
     in
   {
     nixosConfigurations = {
