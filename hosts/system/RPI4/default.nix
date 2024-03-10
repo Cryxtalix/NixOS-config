@@ -6,12 +6,8 @@
   ];
 
   modules = {
-    firewall = {
-      enable = true;
-    };
+    firewall.enable = true;
     git-daemon.enable = true;
-    wifi = {
-      enable = true;
-    };
+    wifi.enable = true;
   };
 }

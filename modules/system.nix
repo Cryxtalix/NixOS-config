@@ -1,4 +1,4 @@
-{ config, lib, pkgs, user, ... }:
+{ config, lib, pkgs, user, user_profile, ... }:
 
 {
   time.timeZone = user.timezone;
@@ -15,6 +15,22 @@
     LC_PAPER = user.locale;
     LC_TELEPHONE = user.locale;
     LC_TIME = user.locale;
+  };
+
+  nix = {
+    settings = {
+      auto-optimise-store = true;
+      experimental-features = [ 
+        "nix-command"
+        "flakes"
+      ];
+    };
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 7d";
+    };
+    package = pkgs.nixFlakes;
   };
 
   services = {
@@ -40,6 +56,12 @@
     extraGroups = {
       vboxusers.members = [ "user-with-access-to-virtualbox" ];
     };
+  };
+
+  sops = {
+    age.keyFile = "${user.homeDir}/.config/sops/age/keys.txt";
+    defaultSopsFile = ../user/${user_profile}/secrets.yaml;
+    defaultSopsFormat = "yaml";
   };
 
   system.stateVersion = "23.11"; # Do not change

@@ -6,7 +6,7 @@ with lib;
   };
 
   config = mkMerge [
-    (mkIf config.modules.gnome {
+    (mkIf config.modules.de.gnome {
       # Enable the GNOME Desktop Environment.
       services.xserver = {
         displayManager.gdm.enable = true;
