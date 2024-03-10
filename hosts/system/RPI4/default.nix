@@ -3,8 +3,6 @@
     ./hardware-configuration.nix
     ./packages.nix
     ../../../modules
-    
-    # Select DE
   ];
 
   modules = {

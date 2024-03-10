@@ -1,6 +1,6 @@
 {
   imports = [
-    ./DE.nix
+    ./desktop-env.nix
     ./firewall.nix
     ./git-daemon.nix
     ./networking.nix

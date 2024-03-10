@@ -6,6 +6,7 @@
   ];
 
   modules = {
+    de.gnome.enable = true;
     firewall = {
       enable = true;
       gsconnect_ports = true;
