@@ -1,13 +1,13 @@
 { config, lib, pkgs, ... }:
-
+with lib;
 {
-  options.custom = {
+  options.modules = {
     git-daemon = {
-      enable = lib.mkEnableOption "Enables git daemon";
+      enable = mkEnableOption "Creates git server";
     };
   };
 
-  config = {
+  config = mkIf config.modules.git-daemon.enable {
     environment.systemPackages = [ pkgs.git ];
     services = {
       gitDaemon = {

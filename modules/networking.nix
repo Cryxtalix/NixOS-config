@@ -1,27 +1,27 @@
 { config, lib, pkgs, hostname, ... }:
-
+with lib;
 {
-  options.custom = {
-    use_networkmanager = lib.mkOption {
-      type = lib.types.bool;
-      default = true;
+  options.modules = {
+    wifi = {
+      enable = mkEnableOption "Enables wifi connectivity";
+      networkmanager = mkEnableOption "Uses network manager";
     };
   };
 
-  config = {
+  config = mkIf config.modules.wifi.enable {
     sops.secrets."wireless.env" = { };
 
-    networking = lib.mkMerge [
+    networking = mkMerge [
       {
         hostName = hostname;
         enableIPv6 = true;
       }
 
-      (lib.mkIf (config.custom.use_networkmanager) {
+      (mkIf (config.modules.wifi.networkmanager) {
         networkmanager.enable = true;
       })
 
-      (lib.mkIf (!config.custom.use_networkmanager) {
+      (mkIf (!config.modules.wifi.networkmanager) {
         wireless = {
           enable = true;
           interfaces = [ "wlan0" ];

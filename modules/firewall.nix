@@ -1,23 +1,29 @@
 { config, lib, pkgs, ... }:
-
+with lib;
 {
-  options.custom = {
-    firewall.enable = lib.mkEnableOption "Enables firewall settings";
+  options.modules = {
+    firewall = {
+      enable = mkEnableOption "Enables firewall";
+      gsconnect_ports = mkEnableOption "Manually opens ports used by gsconnect";
+    };
   };
 
-  config = {
-    networking.firewall = {
-      enable = true;
-      
-      allowedTCPPorts = [];
-      allowedTCPPortRanges = [
-        { from = 1714; to = 1764; }
-      ];
+  config = mkIf config.modules.firewall.enable {
+    networking.firewall = mkMerge [
+      {
+        enable = true;
+      }
 
-      allowedUDPPorts = [];
-      allowedUDPPortRanges = [
-        { from = 1714; to = 1764; }
-      ];
-    };
+      (mkIf (config.modules.firewall.gsconnect_ports) {
+        allowedTCPPorts = [];
+        allowedTCPPortRanges = [
+          { from = 1714; to = 1764; }
+        ];
+        allowedUDPPorts = [];
+        allowedUDPPortRanges = [
+          { from = 1714; to = 1764; }
+        ];
+      })
+    ];
   };
 }

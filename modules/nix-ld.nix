@@ -1,11 +1,11 @@
 { config, lib, pkgs, ... }:
-
+with lib;
 {
-  options.custom = {
+  options.modules = {
     nix-ld.enable = lib.mkEnableOption "Enables nix-ld";
   };
 
-  config = {
+  config = mkIf config.modules.nix-ld.enable {
     programs.nix-ld = {
       enable = true;
       libraries = with pkgs; [

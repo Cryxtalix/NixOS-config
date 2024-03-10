@@ -1,11 +1,11 @@
 { config, lib, pkgs, ... }:
-
+with lib;
 {
-  options.custom = {
-    nvidia_gpu.enable = lib.mkEnableOption "Installs the Nvidia GPU drivers";
+  options.modules = {
+    nvidia_gpu.enable = mkEnableOption "Install Nvidia GPU drivers";
   };
 
-  config = lib.mkIf config.custom.nvidia_gpu.enable {
+  config = mkIf config.modules.nvidia_gpu.enable {
     # Enable OpenGL
     hardware.opengl = {
       enable = true;
