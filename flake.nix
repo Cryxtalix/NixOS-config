@@ -68,5 +68,6 @@
     c = import ./dev-envs/c.nix {pkgs = nixpkgs.legacyPackages."x86_64-linux";};
     python = import ./dev-envs/python.nix {pkgs = nixpkgs.legacyPackages."x86_64-linux";};
     esp = import ./dev-envs/esp.nix {pkgs = nixpkgs.legacyPackages."x86_64-linux";};
+    mkdocs = import ./dev-envs/mkdocs.nix {pkgs = nixpkgs.legacyPackages."x86_64-linux";};
   };
 }

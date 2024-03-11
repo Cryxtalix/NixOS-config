@@ -43,7 +43,7 @@
 
   sops = {
     age.keyFile = "${user.homeDir}/.config/sops/age/keys.txt";
-    defaultSopsFile = ../user/${user_profile}/secrets.yaml;
+    defaultSopsFile = ../user/${user_profile}/secrets.yml;
     defaultSopsFormat = "yaml";
   };
 
