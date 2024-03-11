@@ -4,8 +4,8 @@ My configuration uses flakes and standalone Home-Manager. In order to support mu
 This document will document some features of the config.
 
 ## Index
-[Helpful bash aliases](Documentation/bash_aliases.md)
+[Helpful bash aliases](./bash_aliases.md)
 
-[Installing Nix package manager on other distros](Documentation/installing_nix_pm.md)
+[Installing Nix package manager on other distros](./installing_nix_pm.md)
 
-[Running an SSH git server](Documentation/git_server.md)
+[Running an SSH git server](./git_server.md)
