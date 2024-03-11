@@ -6,7 +6,7 @@ pkgs.mkShell {
     mkdocs-material
   ];
   shellHook = ''
+    export PS1='\[\e[1m\](Mkdocs)[ \[\e[96m\]\w \[\e[39m\]]\\$ \[\e[0m\]'
     echo "Started MkDocs environment..."
-    export PS1='\[\e[1m\](Nix-shell)[ \[\e[96m\]\w \[\e[39m\]]\\$ \[\e[0m\]'
   '';
 }

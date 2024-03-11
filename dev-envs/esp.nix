@@ -1,4 +1,4 @@
-{ pkgs }:
+{ pkgs, linux-style }:
 
 pkgs.mkShell {
   buildInputs = with pkgs; [
@@ -19,7 +19,10 @@ pkgs.mkShell {
     alias b="idf.py build"
     alias f="idf.py flash"
     alias m="idf.py monitor"
+    format() {
+      clang-format -i -style=file:${linux-style} "$1"
+    }
+    export PS1='\[\e[1m\](ESPIDF)[ \[\e[96m\]\w \[\e[39m\]]\\$ \[\e[0m\]'
     echo "Started ESP32 development environment..."
-    export PS1='\[\e[1m\](Nix-shell)[ \[\e[96m\]\w \[\e[39m\]]\\$ \[\e[0m\]'
   '';
 }

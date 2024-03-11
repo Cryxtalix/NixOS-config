@@ -18,6 +18,11 @@
       url = "github:Cryxtalix/Wallpapers";
       flake = false;
     };
+
+    linux-style = {
+      url = "https://raw.githubusercontent.com/torvalds/linux/master/.clang-format";
+      flake = false;
+    };
   };
 
   outputs = { self, nixpkgs, ... }@inputs:
@@ -63,11 +68,17 @@
       os-minimal = mkHomeConfigurations {profile = "minimal"; system = "x86_64-linux"; is_nixos = true;};
       minimal = mkHomeConfigurations {profile = "minimal"; system = "x86_64-linux"; is_nixos = false;};
     };
-
-    # Development shells
-    c = import ./dev-envs/c.nix {pkgs = nixpkgs.legacyPackages."x86_64-linux";};
-    python = import ./dev-envs/python.nix {pkgs = nixpkgs.legacyPackages."x86_64-linux";};
-    esp = import ./dev-envs/esp.nix {pkgs = nixpkgs.legacyPackages."x86_64-linux";};
-    mkdocs = import ./dev-envs/mkdocs.nix {pkgs = nixpkgs.legacyPackages."x86_64-linux";};
-  };
+  }
+  //
+  (let
+    pkgs = nixpkgs.legacyPackages."x86_64-linux";
+    linux-style = inputs.linux-style;
+  in 
+  {
+    # Development environments
+    c = import ./dev-envs/c.nix {inherit pkgs linux-style;};
+    python = import ./dev-envs/python.nix {inherit pkgs;};
+    esp = import ./dev-envs/esp.nix {inherit pkgs linux-style;};
+    mkdocs = import ./dev-envs/mkdocs.nix {inherit pkgs;};
+  });
 }

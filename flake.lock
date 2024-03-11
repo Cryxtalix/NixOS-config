@@ -21,6 +21,18 @@
         "type": "github"
       }
     },
+    "linux-style": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-jX+nbXsW6t4oYaxY21yJ9pT+lS7CqNlbJ7/utOAlbqo=",
+        "type": "file",
+        "url": "https://raw.githubusercontent.com/torvalds/linux/master/.clang-format"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://raw.githubusercontent.com/torvalds/linux/master/.clang-format"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1710021367,
@@ -72,6 +84,7 @@
     "root": {
       "inputs": {
         "home-manager": "home-manager",
+        "linux-style": "linux-style",
         "nixpkgs": "nixpkgs",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "sops-nix": "sops-nix",
