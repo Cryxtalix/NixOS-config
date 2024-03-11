@@ -1,7 +1,7 @@
 # Installing nix package manager on another distro
 We can still get a lot of the reproducibility of NixOS on other distros simply by installing Nix, not as the operating system but as a third party package manager. Together with **Home Manager**, we can configure almost any user apps and make any changes to files and folders in the home folder.
 
-1. Install the Nix package manager with install script from https://zero-to-nix.com/start/install: 
+1. Install the Nix package manager with install script from [https://zero-to-nix.com/start/install](https://zero-to-nix.com/start/install):
     `curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install`.
 
 2. Restart shell and add home-manager channel:
