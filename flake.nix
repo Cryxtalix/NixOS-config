@@ -37,7 +37,7 @@
       };
 
       mkHomeConfigurations = { profile, system, is_nixos, user_profile ? "main" }: 
-      inputs.home-manager.nixpkgs.lib.homeManagerConfiguration {
+      inputs.home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.${system};
         modules = [ 
           ./hosts/home/${profile}
