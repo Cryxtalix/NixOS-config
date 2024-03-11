@@ -2,6 +2,7 @@ site_name: NixOS configuration docs
 site_url: https://cryxtalix.github.io/NixOS-config/
 nav:
   - Home: index.md
+  - Code documentation: code_doc.md
   - Bash aliases: bash_aliases.md
   - Installing nix package manager: installing_nix_pm.md
   - Running an SSH git server: git_server.md
