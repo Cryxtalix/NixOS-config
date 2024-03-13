@@ -5,10 +5,10 @@
 
   environment.systemPackages = with pkgs; [
     git
-    git-crypt
     home-manager
     sops
     switcheroo-control
+    tailscale
     wget
   ];
 

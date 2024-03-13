@@ -5,9 +5,9 @@
 
   environment.systemPackages = with pkgs; [
     git
-    git-crypt
     home-manager
     sops
+    tailscale
     wget
   ];
 
