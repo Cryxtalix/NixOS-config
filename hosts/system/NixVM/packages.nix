@@ -7,7 +7,6 @@
     git
     home-manager
     sops
-    tailscale
     wget
   ];
 

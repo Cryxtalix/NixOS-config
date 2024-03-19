@@ -6,8 +6,6 @@
   home.packages = with pkgs; [
     arduino
     chromium
-    dconf
-    ddrescue
     discord
     distrobox
     element-desktop
@@ -25,13 +23,11 @@
     marker
     neofetch
     nerdfonts
-    nurl
     p7zip
     podman
     python3
     qbittorrent-qt5
     qemu
-    realvnc-vnc-viewer
     steam
     telegram-desktop
     trayscale
