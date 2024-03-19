@@ -18,7 +18,6 @@ with lib;
         nixos-render-docs
         gnome.epiphany
         gnome.geary
-        gnome.seahorse
         gnome.totem
         gnome.yelp
         gnome.gnome-contacts

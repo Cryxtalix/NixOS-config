@@ -15,6 +15,7 @@
   # Program enable
   services = {
     openssh.enable = true;
+    tailscale.enable = true;
     switcherooControl.enable = true;
     printing.enable = false;
     xserver = {

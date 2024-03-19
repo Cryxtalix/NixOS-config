@@ -18,6 +18,7 @@
     gnome.gnome-boxes
     gnome.gnome-tweaks
     htop
+    impression
     libreoffice
     libvirt
     lutris
@@ -31,6 +32,7 @@
     qbittorrent-qt5
     qemu
     realvnc-vnc-viewer
+    steam
     telegram-desktop
     trayscale
     unrar
