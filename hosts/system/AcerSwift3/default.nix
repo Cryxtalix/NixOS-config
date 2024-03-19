@@ -1,6 +1,7 @@
 {
   imports = [
     ./hardware-configuration.nix
+    ./luks-btrfs.nix
     ./packages.nix
     ../../../modules
   ];

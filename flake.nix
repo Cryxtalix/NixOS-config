@@ -14,6 +14,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     wallpaper = {
       url = "github:Cryxtalix/Wallpapers";
       flake = false;
@@ -34,6 +39,7 @@
           ./hosts/system/${hostname}
           ./user/${user_profile}/users.nix
           inputs.sops-nix.nixosModules.sops
+          inputs.disko.nixosModules.disko
         ];
         specialArgs = {
           user = import ./user/${user_profile};
