@@ -5,6 +5,7 @@
 
   environment.systemPackages = with pkgs; [
     git
+    gnupg
     home-manager
     sops
     switcheroo-control

@@ -19,7 +19,7 @@
   }; */
 
 
-  home.file = if (!is_nixos) then {
+  home.file = {
     ".gnupg/gpg.conf".text = ''
       use-agent 
       pinentry-mode loopback
@@ -35,5 +35,5 @@
       default-cache-ttl 86400
       max-cache-ttl 86400
     '';
-  } else {};
+  };
 }
