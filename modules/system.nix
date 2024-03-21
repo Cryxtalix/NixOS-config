@@ -37,7 +37,7 @@
   users = {
     mutableUsers = false;
     extraGroups = {
-      vboxusers.members = [ "user-with-access-to-virtualbox" ];
+      vboxusers.members = [ "${user.username}" ];
     };
   };
 

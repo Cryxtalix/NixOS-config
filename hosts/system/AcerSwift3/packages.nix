@@ -35,6 +35,7 @@
     };
   };
   virtualisation = {
+    libvirtd.enable = true;
     virtualbox = {
       host.enable = true;
       guest.enable = true;
