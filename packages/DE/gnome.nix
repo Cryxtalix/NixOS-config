@@ -52,6 +52,19 @@
         power-button-action = "nothing";
       };
 
+      # Desktop folder
+      "org/gnome/desktop/app-folders/folders/5537d9f3-c756-4ac3-9ebb-66fa82fca661" = {
+        apps = [
+          "startcenter.desktop"
+          "base.desktop"
+          "calc.desktop"
+          "draw.desktop"
+          "impress.desktop"
+          "math.desktop"
+          "writer.desktop"
+        ];
+      };
+
       # Shortcuts
       "org/gnome/desktop/wm/keybindings" = {
         cycle-windows = ["<Super>w"];
