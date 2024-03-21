@@ -31,8 +31,8 @@
         show-battery-percentage = true;
       };
       "org/gnome/desktop/background" = {
-        picture-uri = "${user.homeDir}/.config/wallpaper.png";
-        picture-uri-dark = "${user.homeDir}/.config/wallpaper.png";
+        picture-uri = "${wallpaper_source}/${user.wallpaper}";
+        picture-uri-dark = "${wallpaper_source}/${user.wallpaper}";
       };
       "org/gnome/desktop/peripherals/touchpad" = {
         tap-to-click = true;
@@ -80,8 +80,6 @@
     caffeine
     gsconnect # Check https://userbase.kde.org/KDEConnect#Troubleshooting
   ];
-
-  home.file.".config/wallpaper.png".source = "${wallpaper_source}/${user.wallpaper}";
 }
 
 # Guide:
