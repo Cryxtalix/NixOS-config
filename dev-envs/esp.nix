@@ -13,7 +13,7 @@ pkgs.mkShell {
     ninja
   ]);
   shellHook = ''
-    . $HOME/Workspace/ESP32/esp-idf/export.sh
+    . $HOME/esp-idf/export.sh
     alias bfm="idf.py build && idf.py flash && idf.py monitor"
     alias bf="idf.py build && idf.py flash"
     alias b="idf.py build"
