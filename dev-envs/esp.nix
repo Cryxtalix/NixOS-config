@@ -1,5 +1,10 @@
 { pkgs, linux-style }:
-
+let
+  nixpkgs-esp-dev = builtins.fetchGit {
+    url = "https://github.com/mirrexagon/nixpkgs-esp-dev.git";
+    rev = "7972602ad6bff6c87ec84b0467acfc7ea2046501";
+  };
+in
 pkgs.mkShell {
   buildInputs = with pkgs; [
     gcc.cc.lib
