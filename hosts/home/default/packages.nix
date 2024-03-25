@@ -45,6 +45,7 @@
   ]
   else with pkgs; [
     # Only when not NixOS
+    gnomeExtensions.gsconnect
     sops
     wget
   ]);

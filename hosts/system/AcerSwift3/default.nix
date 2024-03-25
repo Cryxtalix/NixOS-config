@@ -6,11 +6,11 @@
   ];
 
   modules = {
-    de.gnome = true;
-    firewall = {
+    gnome = {
       enable = true;
-      gsconnect_ports = true;
+      gsconnect.enable = true;
     };
+    firewall.enable = true;
     wifi = {
       enable = true;
       networkmanager = true;

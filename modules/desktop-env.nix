@@ -1,12 +1,13 @@
 { config, lib, pkgs, ... }:
 with lib;
 {
-  options.modules.de = {
-    gnome = mkEnableOption "Enables the GNOME desktop environment";
+  options.modules.gnome = {
+    enable = mkEnableOption "Enables the GNOME desktop environment";
+    gsconnect.enable = mkEnableOption "Enables KDEconnect for GNOME Desktops";
   };
 
   config = mkMerge [
-    (mkIf config.modules.de.gnome {
+    (mkIf config.modules.gnome.enable {
       # Enable the GNOME Desktop Environment.
       services.xserver = {
         displayManager.gdm.enable = true;
@@ -27,6 +28,12 @@ with lib;
         gnome.simple-scan
         snapshot
       ];
+
+      # Check https://userbase.kde.org/KDEConnect#Troubleshooting
+      programs.kdeconnect = mkIf config.modules.gnome.gsconnect.enable {
+        enable = true;
+        package = pkgs.gnomeExtensions.gsconnect;
+      };
     })
   ];
 }

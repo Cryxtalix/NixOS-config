@@ -6,7 +6,7 @@
   ];
 
   modules = {
-    de.gnome = true;
+    gnome.enable = true;
     firewall.enable = true;
     sound.enable = true;
   };

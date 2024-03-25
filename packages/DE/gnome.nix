@@ -99,7 +99,6 @@
     alphabetical-app-grid
     blur-my-shell
     caffeine
-    gsconnect # Check https://userbase.kde.org/KDEConnect#Troubleshooting
   ];
 }
 
