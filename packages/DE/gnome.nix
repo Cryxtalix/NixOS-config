@@ -52,6 +52,14 @@
         power-button-action = "nothing";
       };
 
+      # Gnome tweaks
+      "org/gnome/desktop/input-sources" = {
+        xkb-options = [
+          "terminate:ctrl_alt_bksp" 
+          "caps:swapescape"
+        ];
+      };
+
       # Desktop folder
       "org/gnome/desktop/app-folders/folders/5537d9f3-c756-4ac3-9ebb-66fa82fca661" = {
         apps = [
