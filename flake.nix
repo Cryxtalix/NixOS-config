@@ -34,7 +34,7 @@
 
   outputs = { self, nixpkgs, ... }@inputs:
     let
-      mkNixosConfigurations = { hostname, system, user_profile ? "main" }: 
+      mkNixosConfigurations = { hostname, system ? "x86_64-linux", user_profile ? "main" }: 
       nixpkgs.lib.nixosSystem {
         inherit system;
         modules = [
@@ -48,7 +48,7 @@
         };
       };
 
-      mkHomeConfigurations = { profile, system, is_nixos, user_profile ? "main" }: 
+      mkHomeConfigurations = { profile, system ? "x86_64-linux", is_nixos, user_profile ? "main" }: 
       inputs.home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.${system};
         modules = [ 
@@ -64,16 +64,16 @@
     in
   {
     nixosConfigurations = {
-      swift3 = mkNixosConfigurations {hostname = "AcerSwift3"; system = "x86_64-linux";};
-      nixvm = mkNixosConfigurations {hostname = "NixVM"; system = "x86_64-linux";};
+      swift3 = mkNixosConfigurations {hostname = "AcerSwift3";};
+      nixvm = mkNixosConfigurations {hostname = "NixVM";};
       rpi4 = mkNixosConfigurations {hostname = "RPI4"; system = "aarch64-linux";};
     };
 
     homeConfigurations = {
-      default = mkHomeConfigurations {profile = "default"; system = "x86_64-linux"; is_nixos = true;};
-      pm-default = mkHomeConfigurations {profile = "default"; system = "x86_64-linux"; is_nixos = false;};
-      minimal = mkHomeConfigurations {profile = "minimal"; system = "x86_64-linux"; is_nixos = true;};
-      pm-minimal = mkHomeConfigurations {profile = "minimal"; system = "x86_64-linux"; is_nixos = false;};
+      default = mkHomeConfigurations {profile = "default"; is_nixos = true;};
+      pm-default = mkHomeConfigurations {profile = "default"; is_nixos = false;};
+      minimal = mkHomeConfigurations {profile = "minimal"; is_nixos = true;};
+      pm-minimal = mkHomeConfigurations {profile = "minimal"; is_nixos = false;};
     };
   }
   //
