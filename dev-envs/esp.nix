@@ -1,24 +1,12 @@
-{ pkgs, linux-style }:
+{ nixpkgs-esp-dev, system, nixpkgs, linux-style }:
 let
-  nixpkgs-esp-dev = builtins.fetchGit {
-    url = "https://github.com/mirrexagon/nixpkgs-esp-dev.git";
-    rev = "7972602ad6bff6c87ec84b0467acfc7ea2046501";
-  };
+  pkgs = import nixpkgs { inherit system; overlays = [ (import "${nixpkgs-esp-dev}/overlay.nix") ]; };
 in
 pkgs.mkShell {
   buildInputs = with pkgs; [
-    gcc.cc.lib
-    clang-tools
-    cmake
-    python3
-  ] ++ 
-  (with pkgs.python311Packages; [
-    # pip packages
-    pip
-    ninja
-  ]);
+    esp-idf-full
+  ];
   shellHook = ''
-    . $HOME/esp-idf/export.sh
     alias bfm="idf.py build && idf.py flash && idf.py monitor"
     alias bf="idf.py build && idf.py flash"
     alias b="idf.py build"

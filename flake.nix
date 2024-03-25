@@ -23,6 +23,13 @@
       url = "https://raw.githubusercontent.com/torvalds/linux/master/.clang-format";
       flake = false;
     };
+
+    nixpkgs-esp-dev = {
+      type = "github";
+      owner = "mirrexagon";
+      repo = "nixpkgs-esp-dev";
+      rev = "7972602ad6bff6c87ec84b0467acfc7ea2046501";
+    };
   };
 
   outputs = { self, nixpkgs, ... }@inputs:
@@ -71,14 +78,16 @@
   }
   //
   (let
-    pkgs = nixpkgs.legacyPackages."x86_64-linux";
+    system = "x86_64-linux";
+    pkgs = nixpkgs.legacyPackages."${system}";
     linux-style = inputs.linux-style;
+    nixpkgs-esp-dev = inputs.nixpkgs-esp-dev;
   in 
   {
     # Development environments
     c = import ./dev-envs/c.nix {inherit pkgs linux-style;};
     python = import ./dev-envs/python.nix {inherit pkgs;};
-    esp = import ./dev-envs/esp.nix {inherit pkgs linux-style;};
+    esp = import ./dev-envs/esp.nix {inherit nixpkgs-esp-dev system nixpkgs linux-style;};
     mkdocs = import ./dev-envs/mkdocs.nix {inherit pkgs;};
   });
 }
