@@ -5,6 +5,7 @@ in
 pkgs.mkShell {
   buildInputs = with pkgs; [
     esp-idf-full
+    clang-tools
   ];
   shellHook = ''
     alias bfm="idf.py build && idf.py flash && idf.py monitor"
