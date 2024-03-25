@@ -3,7 +3,10 @@ with lib;
 {
   options.modules = {
     firewall = {
-      enable = mkEnableOption "Enables firewall";
+      enable = mkOption {
+        type = types.bool;
+        default = true;
+      };
     };
   };
 
