@@ -34,12 +34,7 @@
     package = pkgs.nixFlakes;
   };
 
-  users = {
-    mutableUsers = false;
-    extraGroups = {
-      vboxusers.members = [ "${user.username}" ];
-    };
-  };
+  users.mutableUsers = false;
 
   sops = {
     age.keyFile = "${user.homeDir}/.config/sops/age/keys.txt";

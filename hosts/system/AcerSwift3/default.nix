@@ -17,6 +17,7 @@
     };
     nvidia_gpu.enable = true;
     sound.enable = true;
+    virtualbox.enable = true;
   };
 
   boot.loader.systemd-boot.enable = true;

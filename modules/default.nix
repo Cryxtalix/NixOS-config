@@ -8,5 +8,6 @@
     ./nvidia-drivers.nix
     ./sound.nix
     ./system.nix
+    ./virtualbox.nix
   ];
 }

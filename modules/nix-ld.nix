@@ -2,7 +2,7 @@
 with lib;
 {
   options.modules = {
-    nix-ld.enable = lib.mkEnableOption "Enables nix-ld";
+    nix-ld.enable = mkEnableOption "Enables nix-ld";
   };
 
   config = mkIf config.modules.nix-ld.enable {
