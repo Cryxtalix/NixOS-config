@@ -50,7 +50,12 @@
 
       mkHomeConfigurations = { profile, system ? "x86_64-linux", is_nixos, user_profile ? "main" }: 
       inputs.home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.${system};
+        pkgs = import nixpkgs {
+          inherit system;
+          overlays = [
+            (import ./overlays)
+          ];
+        };
         modules = [ 
           ./hosts/home/${profile}
         ];

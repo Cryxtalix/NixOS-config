@@ -11,7 +11,7 @@
     element-desktop
     ffmpeg
     firefox
-    pkgs_unstable.foliate
+    foliate
     gittyup
     gnome.gnome-boxes
     gnome.gnome-tweaks
