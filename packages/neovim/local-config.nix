@@ -3,12 +3,12 @@ Install neovim and configuration in ./nvim folder. Contents of the
 folder will be recursively copied to the ~/.config/nvim.
 */
 
-{ pkgs, pkgs_unstable, ... }:
+{ pkgs, ... }:
 
 {
   programs.neovim = {
     enable = true;
-    package = pkgs_unstable.neovim-unwrapped;
+    package = pkgs.neovim-unwrapped;
     viAlias = true;
     vimAlias = true;
     vimdiffAlias = true;

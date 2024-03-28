@@ -2,12 +2,12 @@
 Install neovim, but without configuration.
 */
 
-{ pkgs, pkgs_unstable, ... }:
+{ pkgs, ... }:
 
 {
   programs.neovim = {
     enable = true;
-    package = pkgs_unstable.neovim-unwrapped;
+    package = pkgs.neovim-unwrapped;
     viAlias = true;
     vimAlias = true;
     vimdiffAlias = true;

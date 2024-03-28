@@ -2,10 +2,10 @@
   description = "MyFlake";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
-    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    
     home-manager = {
-      url = "github:nix-community/home-manager/release-23.11";
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -60,7 +60,6 @@
           ./hosts/home/${profile}
         ];
         extraSpecialArgs = {
-          pkgs_unstable = inputs.nixpkgs-unstable.legacyPackages.${system};
           user = import ./user/${user_profile};
           wallpaper_source = inputs.wallpaper;
           inherit is_nixos;

@@ -2,7 +2,7 @@
 Install neovim and import configuration from github repo 
 */
 
-{ pkgs, pkgs_unstable, ... }:
+{ pkgs, ... }:
   let
     neovim = pkgs.fetchFromGitHub{
       owner = "Cryxtalix";
@@ -14,7 +14,7 @@ Install neovim and import configuration from github repo
 {
   programs.neovim = {
     enable = true;
-    package = pkgs_unstable.neovim-unwrapped;
+    package = pkgs.neovim-unwrapped;
     viAlias = true;
     vimAlias = true;
     vimdiffAlias = true;

@@ -22,8 +22,10 @@
     xserver = {
       enable = true;
       # Keyboard
-      layout = "us";
-      xkbVariant = "";
+      xkb = {
+        layout = "us";
+        variant = "";
+      };
       # Mouse and touchpad
       # Let DE auto configure
       /* libinput = {
@@ -35,9 +37,7 @@
     };
   };
   virtualisation = {
-    podman = {
-  	  enable = true;
-  	  enableNvidia = true;
-    };
+    podman.enable = true;
+    containers.cdi.dynamic.nvidia.enable = true;
   };
 }
