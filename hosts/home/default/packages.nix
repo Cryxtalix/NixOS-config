@@ -28,7 +28,6 @@
     python3
     qbittorrent-qt5
     qemu
-    steam
     telegram-desktop
     trayscale
     unrar

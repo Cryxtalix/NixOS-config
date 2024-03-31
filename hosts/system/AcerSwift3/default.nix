@@ -17,6 +17,7 @@
     };
     nvidia_gpu.enable = true;
     sound.enable = true;
+    steam.enable = true;
     virtualbox.enable = true;
   };
 
