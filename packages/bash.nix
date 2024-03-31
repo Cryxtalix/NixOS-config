@@ -9,7 +9,7 @@
       c = "clear";
       neovim = "nvim";
       nix-flake-up = "(cd ${user.configDir} && nix flake update)";
-      nv-gpu = "watch -n1 nvidia-smi";
+      nv-watch = "watch -n1 nvidia-smi";
     } 
     // 
     (if is_nixos then {
