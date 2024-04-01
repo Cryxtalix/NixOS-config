@@ -1,7 +1,6 @@
 final: prev: 
 {
-  vscode = prev.vscode.overrideAttrs (old: 
-  rec {
+  vscode = prev.vscode.overrideAttrs (old: {
     version = "1.85.2";
     rev = "8b3775030ed1a69b13e4f4c628c612102e30a681";
 
