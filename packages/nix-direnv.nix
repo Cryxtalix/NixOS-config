@@ -1,4 +1,4 @@
-{ ... }:
+{ ... }: # Does not currently support aliases
 
 {
   programs = {
