@@ -6,7 +6,6 @@
   home.packages = with pkgs; [
     arduino
     chromium
-    discord
     distrobox
     element-desktop
     ffmpeg
@@ -34,6 +33,7 @@
     virt-manager
     vlc
     vscode
+    webcord
     wineWowPackages.stable
     winetricks
     xivlauncher
