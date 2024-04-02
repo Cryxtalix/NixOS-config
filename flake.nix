@@ -40,6 +40,7 @@
         modules = [
           ./hosts/system/${hostname}
           ./user/${user_profile}/users.nix
+          (import ./overlays)
           inputs.sops-nix.nixosModules.sops
         ];
         specialArgs = {
@@ -50,14 +51,10 @@
 
       mkHomeConfigurations = { profile, system ? "x86_64-linux", is_nixos, user_profile ? "main" }: 
       inputs.home-manager.lib.homeManagerConfiguration {
-        pkgs = import nixpkgs {
-          inherit system;
-          overlays = [
-            (import ./overlays)
-          ];
-        };
+        pkgs = nixpkgs.legacyPackages.${system};
         modules = [ 
           ./hosts/home/${profile}
+          (import ./overlays)
         ];
         extraSpecialArgs = {
           user = import ./user/${user_profile};
