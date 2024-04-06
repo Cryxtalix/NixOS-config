@@ -5,6 +5,7 @@
     cryxtalix = {
       description = "Main user";
       isNormalUser = true;
+      linger = true;
       hashedPasswordFile = config.sops.secrets.cryxtalix_password.path;
       extraGroups = [
         "networkmanager"

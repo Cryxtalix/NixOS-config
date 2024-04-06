@@ -10,7 +10,6 @@ with lib;
       enable = true;
       extraCompatPackages = with pkgs; [
         proton-ge-bin
-        proton-ge-805
       ];
     };
   };

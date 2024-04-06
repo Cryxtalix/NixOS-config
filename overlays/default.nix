@@ -13,17 +13,5 @@
         };
       });
     })
-
-    (final: prev: {
-      proton-ge-805 = prev.proton-ge-bin.overrideAttrs (old: {
-        pname = "proton-ge-805";
-        version = "GE-Proton8-5";
-        src = prev.fetchzip {
-          url = "https://github.com/GloriousEggroll/proton-ge-custom/releases/download/GE-Proton8-5/GE-Proton8-5.tar.gz";
-          hash = "sha256-NqBzKonCYH+hNpVZzDhrVf+r2i6EwLG/IFBXjE2mC7s=";
-        };
-        passthru.updateScript = "";
-      });
-    })
   ];
 }

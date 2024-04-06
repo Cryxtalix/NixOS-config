@@ -10,7 +10,7 @@ with lib;
 
   config = mkIf config.modules.wifi.enable {
     sops.secrets."wireless.env" = { };
-    systemd.services.NetworkManager-ensure-profiles.after = [ "NetworkManager.service" ]; # Temp workaround
+    systemd.services.NetworkManager-wait-online.enable = mkForce false;
 
     networking = mkMerge [
       {
