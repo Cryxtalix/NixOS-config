@@ -21,18 +21,19 @@
     lutris
     marker
     neofetch
-    nerdfonts
     p7zip
     podman
     python3
     qbittorrent-qt5
     qemu
+    scrcpy
+    stellarium
     telegram-desktop
     trayscale
     unrar
     virt-manager
     vlc
-    vscode
+    vscode-fhs
     webcord
     wineWowPackages.stable
     winetricks
