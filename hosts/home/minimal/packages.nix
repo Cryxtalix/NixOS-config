@@ -7,6 +7,7 @@
     distrobox
     firefox
     podman
+    unar
   ]
   ++
   (if is_nixos then with pkgs; [

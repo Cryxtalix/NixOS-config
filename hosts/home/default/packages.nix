@@ -30,7 +30,7 @@
     stellarium
     telegram-desktop
     trayscale
-    unrar
+    unar
     virt-manager
     vlc
     vscode-fhs

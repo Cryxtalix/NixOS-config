@@ -80,6 +80,8 @@
         move-to-monitor-right = ["<Shift><Super>2"];
         switch-to-workspace-left = ["<Super>1"];
         switch-to-workspace-right = ["<Super>2"];
+        switch-group = [];
+        switch-group-backward = [];
       };
       # Custom shortcuts
       "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
