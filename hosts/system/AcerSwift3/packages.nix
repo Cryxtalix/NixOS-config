@@ -39,6 +39,6 @@
   virtualisation = {
     podman.enable = true;
     waydroid.enable = true;
-    containers.cdi.dynamic.nvidia.enable = true;
   };
+  hardware.nvidia-container-toolkit.enable = true;
 }
