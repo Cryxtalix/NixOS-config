@@ -6,7 +6,6 @@
   home.packages = with pkgs; [
     arduino
     chromium
-    distrobox
     element-desktop
     ffmpeg
     firefox
@@ -14,6 +13,7 @@
     gittyup
     gnome.gnome-boxes
     gnome.gnome-tweaks
+    hexchat
     htop
     impression
     libreoffice
@@ -22,8 +22,6 @@
     marker
     neofetch
     p7zip
-    podman
-    python3
     qbittorrent-qt5
     qemu
     scrcpy
@@ -33,15 +31,18 @@
     unar
     virt-manager
     vlc
-    vscode-fhs
     webcord
-    wineWowPackages.stable
-    winetricks
     xivlauncher
   ] 
   ++ 
   (if is_nixos then with pkgs; [
     # Only when NixOS
+    distrobox
+    podman
+    python3
+    vscode-fhs
+    winetricks
+    wineWowPackages.stable
   ]
   else with pkgs; [
     # Only when not NixOS

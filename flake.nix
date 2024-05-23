@@ -90,5 +90,6 @@
     python = import ./dev-envs/python.nix {inherit pkgs;};
     esp = import ./dev-envs/esp.nix {inherit nixpkgs-esp-dev system nixpkgs linux-style;};
     mkdocs = import ./dev-envs/mkdocs.nix {inherit pkgs;};
+    raylib = import ./dev-envs/raylib.nix {inherit pkgs linux-style;};
   });
 }

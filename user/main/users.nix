@@ -11,6 +11,7 @@
         "networkmanager"
         "wheel"
         "podman"
+        "docker"
         "vboxusers"
         "dialout"
       ];

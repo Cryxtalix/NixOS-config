@@ -1,12 +1,20 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 
 {
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs.config = {
+    allowUnfree = true;
+    cudaSupport = true;
+  };
 
   environment.systemPackages = with pkgs; [
+    docker
     git
     gnupg
     home-manager
+    linux-manual
+    man-pages
+    man-pages-posix
+    nvidia-docker
     sops
     switcheroo-control
     tailscale
@@ -38,7 +46,17 @@
   };
   virtualisation = {
     podman.enable = true;
-    waydroid.enable = true;
+    #waydroid.enable = true;
+    docker = {
+      enableNvidia = true;
+      extraOptions = "--add-runtime nvidia=/run/current-system/sw/bin/nvidia-container-runtime";
+    };
   };
   hardware.nvidia-container-toolkit.enable = true;
+  # Manpages
+  documentation = {
+    enable = true;
+    dev.enable = true;
+    man.enable = true;
+  };
 }
