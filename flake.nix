@@ -71,10 +71,10 @@
     };
 
     homeConfigurations = {
-      default = mkHomeConfigurations {profile = "default"; is_nixos = true;};
-      pm-default = mkHomeConfigurations {profile = "default"; is_nixos = false;};
-      minimal = mkHomeConfigurations {profile = "minimal"; is_nixos = true;};
-      pm-minimal = mkHomeConfigurations {profile = "minimal"; is_nixos = false;};
+      os_default = mkHomeConfigurations {profile = "default"; is_nixos = true;};
+      default = mkHomeConfigurations {profile = "default"; is_nixos = false;};
+      os_minimal = mkHomeConfigurations {profile = "minimal"; is_nixos = true;};
+      minimal = mkHomeConfigurations {profile = "minimal"; is_nixos = false;};
     };
   }
   //
